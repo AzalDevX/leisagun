@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "667980126440",
+    "project_id": "adminapp-7da13",
+    "storage_bucket": "adminapp-7da13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667980126440:android:cf2f0e045dbaf2da66915d",
+        "android_client_info": {
+          "package_name": "com.txurdinaga.rednit_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGZzZhqECbUNYPmoaQqnXMD5Msg96k_VU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
