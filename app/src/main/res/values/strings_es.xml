@@ -1,0 +1,10 @@
+<resources>
+        <!--Login_Activity-->
+    <string name="login_mail_text">E-mail</string>
+    <string name="login_pass_text">Contraseña</string>
+
+    <string name="login_submit_button">Enviar</string>
+    <string name="login_register_button">¿No tienes cuenta? ¡Regístrate!</string>
+
+
+</resources>
