@@ -33,9 +33,11 @@ class LoginActivity : AppCompatActivity() {
         submit_button.setOnClickListener{
             val email = email_edit_text.text.toString().trim()
             val password = password_edit_text.text.toString().trim()
+            val no_completed_error = R.string.login_complete_error_message
+            val credential_error = R.string.login_credential_error_message
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, no_completed_error, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             auth.signInWithEmailAndPassword(email, password)
@@ -48,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                         startActivity(intent)
                         finish()
                     } else {
-                        Toast.makeText(this, "Credenciales incorrectas. Inténtalo de nuevo.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, credential_error, Toast.LENGTH_SHORT).show()
                     }
                 }
 
@@ -56,7 +58,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         register_button.setOnClickListener{
-            //Código para que te redireccione a la activity de RegisterActivity
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
 

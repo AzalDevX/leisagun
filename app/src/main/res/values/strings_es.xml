@@ -5,6 +5,8 @@
 
     <string name="login_submit_button">Enviar</string>
     <string name="login_register_button">¿No tienes cuenta? ¡Regístrate!</string>
-
+    
+    <string name="login_credential_error_message">Por favor, completa todos los campos.</string>
+    <string name="login_complete_error_message">Credenciales incorrectas. Inténtalo de nuevo.</string>
 
 </resources>
