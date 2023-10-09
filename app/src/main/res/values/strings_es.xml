@@ -1,4 +1,8 @@
 <resources>
+    <!-- Main Activity-->
+    <string name="autologin_success">Bienvenido </string>
+    <string name="autologin_error">Ha ocurrido un error al intentar iniciar session</string>
+
         <!--Login_Activity-->
     <string name="login_mail_text">E-mail</string>
     <string name="login_pass_text">Contraseña</string>

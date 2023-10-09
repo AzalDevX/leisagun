@@ -1,4 +1,4 @@
-package com.txurdinaga.rednit_app
+package com.txurdinaga.rednit_app.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,8 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthUserCollisionException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.auth.*
+import com.txurdinaga.rednit_app.R
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,8 +32,8 @@ class LoginActivity : AppCompatActivity() {
         submit_button.setOnClickListener{
             val email = email_edit_text.text.toString().trim()
             val password = password_edit_text.text.toString().trim()
-            val no_completed_error = R.string.login_complete_error_message
-            val credential_error = R.string.login_credential_error_message
+            val no_completed_error = R.string.login_credential_error_message
+            val credential_error = R.string.login_complete_error_message
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                 Toast.makeText(this, no_completed_error, Toast.LENGTH_SHORT).show()
@@ -44,13 +43,32 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Iniciar MainActivity y pasar el correo electrónico y la contraseña como extras
-                        val intent = Intent(this, MainActivity::class.java)
                         intent.putExtra("email", email)
                         intent.putExtra("password", password)
-                        startActivity(intent)
+
+                        /**
+                         * @description: Store credentials locally
+                         */
+
+                        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putString("email", email)
+                        editor.putString("password", password)
+                        editor.apply()
+
+                        startActivity(Intent(this, HomeActivity::class.java))
                         finish()
                     } else {
-                        Toast.makeText(this, credential_error, Toast.LENGTH_SHORT).show()
+                        try {
+                            throw task.exception!!
+                        } catch (e: FirebaseAuthInvalidUserException) {
+                            Toast.makeText(this, "El usuario no existe o está deshabilitado.", Toast.LENGTH_SHORT).show()
+                        } catch (e: FirebaseAuthInvalidCredentialsException) {
+                            Toast.makeText(this, "Credenciales inválidas. Por favor, verifica tu correo y contraseña.", Toast.LENGTH_SHORT).show()
+                        } catch (e: Exception) {
+                            // Toast.makeText(this, "Error al iniciar sesión: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, credential_error, Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
         }

@@ -1,4 +1,4 @@
-package com.txurdinaga.rednit_app
+package com.txurdinaga.rednit_app.views
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
+import com.txurdinaga.rednit_app.MainActivity
+import com.txurdinaga.rednit_app.R
 
 class RegisterActivity : AppCompatActivity() {
 

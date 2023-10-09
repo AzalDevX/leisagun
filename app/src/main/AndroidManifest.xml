@@ -13,10 +13,36 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             tools:targetApi="31">
         <activity
-                android:name=".RegisterActivity"
+                android:name=".views.CalendarActivity"
+                android:exported="false"
+                android:label="@string/title_activity_calendar"
+                android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+                android:name=".views.MapsActivity"
                 android:exported="false"/>
         <activity
-                android:name=".LoginActivity"
+                android:name=".views.AdventureCreatorActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.EventsActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.ProfileActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.ChatActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.FavouriteActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.HomeActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.RegisterActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".views.LoginActivity"
                 android:exported="false"/>
         <activity
                 android:name=".MainActivity"
