@@ -4,9 +4,22 @@
     <string name="login_pass_text">Contraseña</string>
 
     <string name="login_submit_button">Enviar</string>
-    <string name="login_register_button">¿No tienes cuenta? ¡Regístrate!</string>
+    <string name="login_to_register_button">¿No tienes cuenta? ¡Regístrate!</string>
     
     <string name="login_credential_error_message">Por favor, completa todos los campos.</string>
     <string name="login_complete_error_message">Credenciales incorrectas. Inténtalo de nuevo.</string>
+
+        <!--Register_Activity-->
+    <string name="register_fullname_text">Nombre Completo</string>
+    <string name="register_age_text">Edad</string>
+    <string name="register_mail_text">E-mail</string>
+    <string name="register_pass_text">Contraseña</string>
+    <string name="register_repass_text">Repite Contraseña</string>
+
+    <string name="register_submit_button">Registrarse</string>
+    <string name="register_to_login_button">¿Ya tienes una cuenta? ¡Entra!</string>
+
+    <string name="register_credential_error_message">Por favor, completa todos los campos.</string>
+    <string name="register_complete_error_message">Credenciales incorrectas. Inténtalo de nuevo.</string>
 
 </resources>

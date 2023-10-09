@@ -53,8 +53,6 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, credential_error, Toast.LENGTH_SHORT).show()
                     }
                 }
-
-
         }
 
         register_button.setOnClickListener{
