@@ -12,38 +12,51 @@ import com.txurdinaga.rednit_app.views.LoginActivity
 
 class MainActivity : AppCompatActivity() {
 
-//    private val globals = application as Globals
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        Log.i("project|startup", "App has been started, device information:")
+        Log.i("project|model", "Device Model: ${android.os.Build.MODEL}")
+        Log.i("project|version", "Android Version: ${android.os.Build.VERSION.RELEASE}")
+        Log.i("project|screen", "Screen Size: ${resources.configuration.screenLayout and android.content.res.Configuration.SCREENLAYOUT_SIZE_MASK}")
+        Log.i("project|resolution", "Screen Resolution: ${resources.displayMetrics.widthPixels.toString() + "x" + resources.displayMetrics.heightPixels.toString()}")
+
+        Log.i("project|main", "MainActivity has started!")
+
+        val globals = application as Globals
+
         /**
          * @description: override startup page to your own, uncomment to avoid logging/register
          * */
-        // val intent = Intent(this, RegisterActivity::class.java)
-        // startActivity(intent)
+        // startActivity(Intent(this, RegisterActivity::class.java))
 
         /**
          * @description: Check local credentials to automatically log in the user
          */
-        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE)
         val email = sharedPreferences.getString("email", null)
         val password = sharedPreferences.getString("password", null)
 
+        if (globals.enviroment == "development") {
+            Log.i("project|main", "Reading stored login data, email: $email, password: $password")
+        }
+
+        val auth = FirebaseAuth.getInstance()
+
         if (email != null && password != null) {
-            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) { // User successfully logged in
-                        val user = FirebaseAuth.getInstance().currentUser
-                        Log.i("AUTOLOGIN", "USER: $user")
-//                        globals.current_user = user
-//                        Log.i("AUTOLOGIN","GLOBAL_USER: $globals.current_user")
-                        intent.putExtra("user", user)
+                        val user = auth.currentUser
+                        Log.i("project|autologin", "Automatically log-in in the user: ${user?.displayName ?: user?.email}")
+                        globals.current_user = user
 
+                        Toast.makeText(this, "${getString(R.string.autologin_success)} ${user?.displayName ?: user?.email}!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, HomeActivity::class.java))
-                        Toast.makeText(this, resources.getString(R.string.autologin_success), Toast.LENGTH_SHORT).show()
                     } else { // Auto-login failed
-                        Toast.makeText(this, resources.getString(R.string.autologin_error), Toast.LENGTH_SHORT).show()
+                        Log.e("autologin", "Failed to auto-login the user, redirecting to login...")
+                        Toast.makeText(this, R.string.autologin_error, Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, LoginActivity::class.java))
                     }
                 }
@@ -51,8 +64,17 @@ class MainActivity : AppCompatActivity() {
             /**
              * @description: Open login activity by default
              */
+            Log.i("project|main", "No login data found, redirecting to login...")
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
     }
 }
+
+/**
+ * @title: String literals
+ * When you use the string from strings.xml inside another string concatenated by user thi example
+ * @sample: "${R.string.autologin_success}" // it will treat is as an integer for some reason
+ * use instead
+ * @sample "${getString(R.string.autologin_success)}" // it will fix it by referencing the str
+ */

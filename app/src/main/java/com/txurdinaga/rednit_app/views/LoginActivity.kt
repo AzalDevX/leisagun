@@ -4,11 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.*
 import com.txurdinaga.rednit_app.R
+import com.txurdinaga.rednit_app.classes.Globals
 
 class LoginActivity : AppCompatActivity() {
 
@@ -22,6 +24,10 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        Log.i("project|main", "LoginActivity has started!")
+
+        val globals = application as Globals
+
         email_edit_text = findViewById(R.id.email_edit_text)
         password_edit_text = findViewById(R.id.password_edit_text)
         submit_button = findViewById(R.id.submit_button)
@@ -32,29 +38,27 @@ class LoginActivity : AppCompatActivity() {
         submit_button.setOnClickListener{
             val email = email_edit_text.text.toString().trim()
             val password = password_edit_text.text.toString().trim()
-            val no_completed_error = R.string.login_credential_error_message
-            val credential_error = R.string.login_complete_error_message
 
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                Toast.makeText(this, no_completed_error, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.login_credential_error_message, Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Iniciar MainActivity y pasar el correo electrónico y la contraseña como extras
-                        val user = FirebaseAuth.getInstance().currentUser
-                        intent.putExtra("user", user)
+                        val user = auth.currentUser
+                        globals.current_user = user
 
                         /**
                          * @description: Store credentials locally
                          */
-
                         val sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putString("email", email)
                         editor.putString("password", password)
                         editor.apply()
+
+                        Log.i("project|login", "User has been logged-in successfully, redirecting to home...")
 
                         startActivity(Intent(this, HomeActivity::class.java))
                         finish()
@@ -62,13 +66,13 @@ class LoginActivity : AppCompatActivity() {
                         try {
                             throw task.exception!!
                         } catch (e: FirebaseAuthInvalidUserException) {
-                            Toast.makeText(this, "El usuario no existe o está deshabilitado.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, R.string.login_first_error, Toast.LENGTH_SHORT).show()
                         } catch (e: FirebaseAuthInvalidCredentialsException) {
-                            Toast.makeText(this, "Credenciales inválidas. Por favor, verifica tu correo y contraseña.", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, R.string.login_invalid_creds_error, Toast.LENGTH_SHORT).show()
                         } catch (e: Exception) {
-                            // Toast.makeText(this, "Error al iniciar sesión: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
-                            Toast.makeText(this, credential_error, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this, R.string.login_complete_error_message, Toast.LENGTH_SHORT).show()
                         }
+                        Log.e("login", "Exception caught while login-in user: ${task.exception.toString()}")
                     }
                 }
         }
@@ -77,7 +81,5 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 }

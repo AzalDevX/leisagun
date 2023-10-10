@@ -2,6 +2,8 @@ package com.txurdinaga.rednit_app.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import android.widget.*
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
@@ -19,6 +21,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        Log.e("home", "Home activity has started!")
+
+        val globals = application as Globals
 //        Toast.makeText(this, globals.current_user?.email.toString(), Toast.LENGTH_SHORT).show()
 
         // Infla la vista que contiene la "carta"
