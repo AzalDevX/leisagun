@@ -26,4 +26,16 @@
     <string name="register_credential_error_message">Por favor, completa todos los campos.</string>
     <string name="register_complete_error_message">Credenciales incorrectas. Inténtalo de nuevo.</string>
 
+        <!--  Home_Activity-->
+    <string name="home_filter_gym_text">GYM</string>
+    <string name="home_filter_walk_text">Senderismo</string>
+    <string name="home_filter_beach_text">Playa</string>
+
+    <string name="home_ereaga_text">EREAGA</string>
+    <string name="home_getxo_text">Getxo</string>
+    <string name="home_username_text">TestUser</string>
+
+
+
+
 </resources>

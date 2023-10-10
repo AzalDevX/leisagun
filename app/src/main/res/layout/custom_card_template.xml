@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <!-- custom_card_template.xml -->
+    <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#919191" tools:ignore="MissingConstraints">
+
+        <!-- Columna izquierda (75%) -->
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:orientation="vertical">
+
+            <!-- Fila 1 (Título en negrita) -->
+            <TextView
+                    android:id="@+id/card_title_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"/>
+
+            <!-- Fila 2 (Subtítulo) -->
+            <TextView
+                    android:id="@+id/card_subtitle_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <!-- Fila 3 (Username a la derecha) -->
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <!-- Contenido izquierdo -->
+
+                <!-- Username a la derecha -->
+                <TextView
+                        android:id="@+id/card_username_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Columna derecha (25%) -->
+        <ImageView
+                android:id="@+id/card_maps_activity"
+                android:layout_width="103dp"
+                android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
