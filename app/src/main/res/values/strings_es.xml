@@ -1,9 +1,9 @@
 <resources>
     <!-- Main Activity-->
-    <string name="autologin_success">Bienvenido </string>
+    <string name="autologin_success">Bienvenido</string>
     <string name="autologin_error">Ha ocurrido un error al intentar iniciar session</string>
 
-        <!--Login_Activity-->
+    <!--Login_Activity-->
     <string name="login_mail_text">E-mail</string>
     <string name="login_pass_text">Contraseña</string>
 
@@ -13,8 +13,11 @@
     <string name="login_credential_error_message">Por favor, completa todos los campos.</string>
     <string name="login_complete_error_message">Credenciales incorrectas. Inténtalo de nuevo.</string>
 
-        <!--Register_Activity-->
-    <string name="register_fullname_text">Nombre Completo</string>
+    <string name="login_first_error">El usuario no existe o está deshabilitado.</string>
+    <string name="login_invalid_creds_error">Credenciales inválidas. Por favor, verifica tu correo y contraseña.</string>
+
+    <!--Register_Activity-->
+    <string name="register_full_name_text">Nombre Completo</string>
     <string name="register_age_text">Edad</string>
     <string name="register_mail_text">E-mail</string>
     <string name="register_pass_text">Contraseña</string>
@@ -25,5 +28,10 @@
 
     <string name="register_credential_error_message">Por favor, completa todos los campos.</string>
     <string name="register_complete_error_message">Credenciales incorrectas. Inténtalo de nuevo.</string>
+    <string name="register_additional_info">Error al guardar la información adicional.</string>
+
+    <string name="register_mail_already_exists">Este email ya está registrado..</string>
+    <string name="register_pass_weak">La contraseña es demasiado débil.</string>
+    <string name="register_unknown_error">Error al registrar:</string>
 
 </resources>
