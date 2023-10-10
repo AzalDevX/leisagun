@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                          * @description: Store credentials locally
                          */
 
-                        val sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
+                        val sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putString("email", email)
                         editor.putString("password", password)
