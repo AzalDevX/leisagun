@@ -3,12 +3,16 @@ package com.txurdinaga.rednit_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.txurdinaga.rednit_app.classes.Globals
 import com.txurdinaga.rednit_app.views.HomeActivity
 import com.txurdinaga.rednit_app.views.LoginActivity
 
 class MainActivity : AppCompatActivity() {
+
+//    private val globals = application as Globals
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +35,9 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) { // User successfully logged in
                         val user = FirebaseAuth.getInstance().currentUser
+                        Log.i("AUTOLOGIN", "USER: $user")
+//                        globals.current_user = user
+//                        Log.i("AUTOLOGIN","GLOBAL_USER: $globals.current_user")
                         intent.putExtra("user", user)
 
                         startActivity(Intent(this, HomeActivity::class.java))
