@@ -43,8 +43,8 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // Iniciar MainActivity y pasar el correo electrónico y la contraseña como extras
-                        intent.putExtra("email", email)
-                        intent.putExtra("password", password)
+                        val user = FirebaseAuth.getInstance().currentUser
+                        intent.putExtra("user", user)
 
                         /**
                          * @description: Store credentials locally

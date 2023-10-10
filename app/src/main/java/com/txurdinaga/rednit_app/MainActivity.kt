@@ -31,6 +31,8 @@ class MainActivity : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) { // User successfully logged in
                         val user = FirebaseAuth.getInstance().currentUser
+                        intent.putExtra("user", user)
+
                         startActivity(Intent(this, HomeActivity::class.java))
                         Toast.makeText(this, resources.getString(R.string.autologin_success), Toast.LENGTH_SHORT).show()
                     } else { // Auto-login failed
