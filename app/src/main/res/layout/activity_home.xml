@@ -60,12 +60,65 @@
         <!-- Otras vistas -->
 
         <!-- Incluye la carta utilizando <include> -->
-        <include layout="@layout/custom_card_template" />
 
         <!-- Otras vistas -->
 
     </LinearLayout>
 
+    <!-- Panel at the bottom with five buttons -->
+    <LinearLayout
+            android:id="@+id/buttonPanel"
+            android:layout_width="407dp"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
+        <!-- Left buttons -->
+        <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="1"/>
 
+        <!-- Middle button with plus sign (overlapped) -->
+        <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"/>
+        <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="2"/>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_gravity="center">
+
+            <!-- Middle button -->
+
+            <!-- Overlapping plus sign -->
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"/>
+        </LinearLayout>
+
+        <!-- Right buttons -->
+        <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="3"/>
+        <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_weight="1"/>
+        <Button
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="4"/>
+
+    </LinearLayout>
+    <include layout="@layout/custom_card_template" tools:layout_editor_absoluteY="255dp"
+             tools:layout_editor_absoluteX="0dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
