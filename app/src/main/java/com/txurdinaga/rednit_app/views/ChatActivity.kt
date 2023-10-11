@@ -1,5 +1,6 @@
 package com.txurdinaga.rednit_app.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +12,12 @@ class ChatActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
 
-        Log.i("project|main", "ChatActivity has started!")
+        Log.d("project|main", "ChatActivity has started!")
 
         val globals = application as Globals
+
+        if (globals.current_user == null)
+            startActivity(Intent(this, LoginActivity::class.java))
 
     }
 }

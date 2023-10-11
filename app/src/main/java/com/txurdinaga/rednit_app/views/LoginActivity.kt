@@ -24,9 +24,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        Log.i("project|main", "LoginActivity has started!")
+        Log.d("project|main", "LoginActivity has started!")
 
         val globals = application as Globals
+
+        if (globals.current_user != null)
+            startActivity(Intent(this, HomeActivity::class.java))
 
         email_edit_text = findViewById(R.id.email_edit_text)
         password_edit_text = findViewById(R.id.password_edit_text)
@@ -81,5 +84,14 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        Log.d("project|main", "LoginActivity onBackPressed has been called!")
+
+        val globals = application as Globals
+
+        if (globals.current_user != null)
+            super.onBackPressed()
     }
 }

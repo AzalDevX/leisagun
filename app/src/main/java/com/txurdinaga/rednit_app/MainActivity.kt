@@ -22,9 +22,12 @@ class MainActivity : AppCompatActivity() {
         Log.i("project|screen", "Screen Size: ${resources.configuration.screenLayout and android.content.res.Configuration.SCREENLAYOUT_SIZE_MASK}")
         Log.i("project|resolution", "Screen Resolution: ${resources.displayMetrics.widthPixels.toString() + "x" + resources.displayMetrics.heightPixels.toString()}")
 
-        Log.i("project|main", "MainActivity has started!")
+        Log.d("project|main", "MainActivity has started!")
 
         val globals = application as Globals
+
+        if (globals.current_user != null)
+            startActivity(Intent(this, HomeActivity::class.java))
 
         /**
          * @description: override startup page to your own, uncomment to avoid logging/register

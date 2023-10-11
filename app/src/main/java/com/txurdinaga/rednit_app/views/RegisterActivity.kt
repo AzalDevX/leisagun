@@ -33,9 +33,12 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        Log.i("project|main", "RegisterActivity has started!")
+        Log.d("project|main", "RegisterActivity has started!")
 
         val globals = application as Globals
+
+        if (globals.current_user != null)
+            startActivity(Intent(this, HomeActivity::class.java))
 
         fullname_edit_text = findViewById(R.id.fullname_edit_text)
         age_edit_text = findViewById(R.id.age_edit_text)
@@ -122,5 +125,14 @@ class RegisterActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onBackPressed() {
+        Log.d("project|main", "RegisterActivity onBackPressed has been called!")
+
+        val globals = application as Globals
+
+        if (globals.current_user != null)
+            super.onBackPressed()
     }
 }

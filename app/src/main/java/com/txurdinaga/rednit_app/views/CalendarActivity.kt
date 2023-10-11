@@ -1,5 +1,6 @@
 package com.txurdinaga.rednit_app.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +12,12 @@ class CalendarActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
 
-        Log.i("project|main", "CalendarActivity has started!")
+        Log.d("project|main", "CalendarActivity has started!")
 
         val globals = application as Globals
+
+        if (globals.current_user == null)
+            startActivity(Intent(this, LoginActivity::class.java))
 
     }
 }
