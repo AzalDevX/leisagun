@@ -59,11 +59,14 @@
 
     </LinearLayout>
 
-    <!-- Columna derecha (25%) -->
-    <ImageView
-            android:id="@+id/card_maps_activity"
-            android:layout_width="103dp"
-            android:layout_height="match_parent"/>
+        <!-- Columna derecha (25%) -->
+        <ImageView
+                android:id="@+id/card_maps_activity"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:padding="25dp"
+        />
+
 
 </LinearLayout>
 
