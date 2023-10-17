@@ -1,0 +1,65 @@
+<resources>
+    <!--GENERAL -->
+    <string name="app_name">rednit-app</string>
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris volutpat, dolor id
+        interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus dui nec risus. Maecenas non sodales
+        nisi, vel dictum dolor.
+    </string>
+
+    <!-- Main Activity -->
+    <string name="autologin_success">Welcome</string>
+    <string name="autologin_error">An error occurred while trying to log in</string>
+
+    <!-- Login_Activity -->
+    <string name="login_mail_text">E-mail</string>
+    <string name="login_pass_text">Password</string>
+
+    <string name="login_submit_button">Submit</string>
+    <string name="login_to_register_button">Don\'t have an account? Register now!</string>
+
+    <string name="login_credential_error_message">Please complete all fields.</string>
+    <string name="login_complete_error_message">Incorrect credentials. Please try again.</string>
+
+    <string name="login_first_error">The user does not exist or is disabled.</string>
+    <string name="login_invalid_creds_error">Invalid credentials. Please check your email and password.</string>
+
+    <!-- Register_Activity -->
+    <string name="register_full_name_text">Full Name</string>
+    <string name="register_age_text">Age</string>
+    <string name="register_mail_text">E-mail</string>
+    <string name="register_pass_text">Password</string>
+    <string name="register_repass_text">Repeat Password</string>
+
+    <string name="register_submit_button">Register</string>
+    <string name="register_to_login_button">Already have an account? Log in now!</string>
+
+    <string name="register_credential_error_message">Please complete all fields.</string>
+    <string name="register_complete_error_message">Incorrect credentials. Please try again.</string>
+    <string name="register_additional_info">Error saving additional information.</string>
+
+    <string name="register_mail_already_exists">This email is already registered.</string>
+    <string name="register_pass_weak">The password is too weak.</string>
+    <string name="register_unknown_error">Error registering:</string>
+
+    <!-- Home_Activity -->
+    <string name="home_filter_gym_text">GYM</string>
+    <string name="home_filter_walk_text">Hiking</string>
+    <string name="home_filter_beach_text">Beach</string>
+
+    <string name="home_ereaga_text">EREAGA</string>
+    <string name="home_getxo_text">Getxo</string>
+    <string name="home_username_text">TestUser</string>
+
+    <!-- Profile Activity -->
+    <string name="profile_title">Your Profile</string>
+</resources>

@@ -7,4 +7,5 @@ class Globals : Application(){
     var enviroment: String = "development"; // development or production
 
     var current_user: FirebaseUser ?= null;
+    var app_language = "eu";
 }

@@ -1,0 +1,65 @@
+<resources id="eu">
+    <!--GENERAL -->
+    <string name="app_name">rednit-app</string>
+    <string name="login_title">Login</string>
+    <string name="register_title">Register</string>
+    <string name="title_activity_calendar">CalendarActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris volutpat, dolor id
+        interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus dui nec risus. Maecenas non sodales
+        nisi, vel dictum dolor.
+    </string>
+
+    <!-- Main Activity -->
+    <string name="autologin_success">Ongi etorri</string>
+    <string name="autologin_error">Errore bat gertatu da saioa hasten saiatzean</string>
+
+    <!-- Login_Activity -->
+    <string name="login_mail_text">Posta elektronikoa</string>
+    <string name="login_pass_text">Pasahitza</string>
+
+    <string name="login_submit_button">Bidali</string>
+    <string name="login_to_register_button">Ez duzu konturik? Erregistratu orain!</string>
+
+    <string name="login_credential_error_message">Mesedez, bete eremu guztiak.</string>
+    <string name="login_complete_error_message">Kredentzial okerrak. Saiatu berriro mesedez.</string>
+
+    <string name="login_first_error">Erabiltzailea ez dago edo desgaitua dago.</string>
+    <string name="login_invalid_creds_error">Kredentzial okerra. Mesedez, begiratu zure posta eta pasahitza.</string>
+
+    <!-- Register_Activity -->
+    <string name="register_full_name_text">Izen eta Abizena</string>
+    <string name="register_age_text">Adina</string>
+    <string name="register_mail_text">Posta elektronikoa</string>
+    <string name="register_pass_text">Pasahitza</string>
+    <string name="register_repass_text">Errepikatu Pasahitza</string>
+
+    <string name="register_submit_button">Erregistratu</string>
+    <string name="register_to_login_button">Dagoeneko kontu bat duzu? Saioa hasten saiatu zaitez!</string>
+
+    <string name="register_credential_error_message">Mesedez, bete eremu guztiak.</string>
+    <string name="register_complete_error_message">Kredentzial okerrak. Saiatu berriro mesedez.</string>
+    <string name="register_additional_info">Informazio osagarria gordetzean errorea.</string>
+
+    <string name="register_mail_already_exists">Posta hau dagoeneko erregistratuta dago.</string>
+    <string name="register_pass_weak">Pasahitza oso ahula da.</string>
+    <string name="register_unknown_error">Errorea erregistratzean:</string>
+
+    <!-- Home_Activity -->
+    <string name="home_filter_gym_text">GYM</string>
+    <string name="home_filter_walk_text">Ibilaldiak</string>
+    <string name="home_filter_beach_text">Hondartza</string>
+
+    <string name="home_ereaga_text">EREAGA</string>
+    <string name="home_getxo_text">Getxo</string>
+    <string name="home_username_text">TestErabiltzailea</string>
+
+    <!-- Profile Activity -->
+    <string name="profile_title">Zure Profila</string>
+</resources>

@@ -7,8 +7,10 @@ import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.txurdinaga.rednit_app.classes.Globals
+import com.txurdinaga.rednit_app.classes.Utilities
 import com.txurdinaga.rednit_app.views.HomeActivity
 import com.txurdinaga.rednit_app.views.LoginActivity
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +18,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val device_lang = Locale.getDefault().language
         Log.i("project|startup", "App has been started, device information:")
         Log.i("project|model", "Device Model: ${android.os.Build.MODEL}")
+        Log.i("project|language", "Device Language: ${device_lang}")
         Log.i("project|version", "Android Version: ${android.os.Build.VERSION.RELEASE}")
         Log.i("project|screen", "Screen Size: ${resources.configuration.screenLayout and android.content.res.Configuration.SCREENLAYOUT_SIZE_MASK}")
         Log.i("project|resolution", "Screen Resolution: ${resources.displayMetrics.widthPixels.toString() + "x" + resources.displayMetrics.heightPixels.toString()}")
@@ -25,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         Log.d("project|main", "MainActivity has started!")
 
         val globals = application as Globals
+        val utils = Utilities()
 
         if (globals.current_user != null)
             startActivity(Intent(this, HomeActivity::class.java))
@@ -37,9 +42,17 @@ class MainActivity : AppCompatActivity() {
         /**
          * @description: Check local credentials to automatically log in the user
          */
+        val sharedSettings = getSharedPreferences("userSettings", MODE_PRIVATE)
         val sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE)
         val email = sharedPreferences.getString("email", null)
         val password = sharedPreferences.getString("password", null)
+        val lang = sharedSettings.getString("lang", null) ?: device_lang
+
+        if (lang != null) {
+            globals.app_language = lang
+            utils.setLocale(this@MainActivity, lang)
+            Log.i("project|main", "App language has been restored from memory. current language \"${lang}\"")
+        }
 
         if (globals.enviroment == "development") {
             Log.i("project|main", "Reading stored login data, email: $email, password: $password")
