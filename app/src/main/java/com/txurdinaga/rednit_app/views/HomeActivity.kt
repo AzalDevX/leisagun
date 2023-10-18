@@ -61,7 +61,7 @@ class HomeActivity : AppCompatActivity() {
                     val data = document.data
 
                     // Accede al campo "timestamp" del documento y obtiene un objeto Timestamp
-                    val timestamp = data["Hora"] as Timestamp
+                    val timestamp = data["hora"] as Timestamp
                     // Convierte el Timestamp a un objeto LocalDateTime en UTC
                     val localDateTimeUtc =
                         timestamp.toDate().toInstant().atOffset(ZoneOffset.UTC).toLocalDateTime().plusHours(2)
@@ -72,9 +72,9 @@ class HomeActivity : AppCompatActivity() {
 
 
                     // Establece los textos personalizados
-                    card_title.text = data["Actividad"].toString().uppercase(Locale.getDefault())
-                    card_subtitle.text = "${data["Localizacion"].toString()} | $formattedDate"
-                    card_username.text = data["ID_Usuario"].toString()
+                    card_title.text = data["actividad"].toString().uppercase(Locale.getDefault())
+                    card_subtitle.text = "${data["localizacion"].toString()} | $formattedDate"
+                    card_username.text = data["id_usuario"].toString()
                     card_maps.setImageResource(android.R.drawable.ic_dialog_map)
 
                     val layoutParams = LinearLayout.LayoutParams(
