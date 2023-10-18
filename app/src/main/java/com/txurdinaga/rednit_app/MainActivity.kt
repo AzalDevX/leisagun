@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.txurdinaga.rednit_app.classes.Globals
 import com.txurdinaga.rednit_app.classes.Utilities
 import com.txurdinaga.rednit_app.views.HomeActivity
@@ -31,13 +36,16 @@ class MainActivity : AppCompatActivity() {
         val globals = application as Globals
         val utils = Utilities()
 
+        FirebaseApp.initializeApp(this)
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         if (globals.current_user != null)
             startActivity(Intent(this, HomeActivity::class.java))
 
         /**
          * @description: override startup page to your own, uncomment to avoid logging/register
          * */
-        // startActivity(Intent(this, RegisterActivity::class.java))
+//        startActivity(Intent(this, MainActivity::class.java))
 
         /**
          * @description: Check local credentials to automatically log in the user
