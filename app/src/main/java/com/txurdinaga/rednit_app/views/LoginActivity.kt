@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.*
 import com.txurdinaga.rednit_app.R
@@ -17,7 +18,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var email_edit_text : EditText
     private lateinit var password_edit_text : EditText
     private lateinit var submit_button : Button
-    private lateinit var register_button : Button
+    private lateinit var register_button : TextView
 
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {

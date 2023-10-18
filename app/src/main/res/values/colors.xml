@@ -22,4 +22,5 @@
 
     <!-- Color for the send button -->
     <color name="send_button_color">#7289DA</color>
+    <color name="input_hint_color">#808080</color>
 </resources>
