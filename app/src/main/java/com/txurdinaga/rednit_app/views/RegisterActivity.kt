@@ -98,7 +98,7 @@ class RegisterActivity : AppCompatActivity() {
                                     editor.putString("password", password)
                                     editor.apply()
 
-                                    startActivity(Intent(this, MainActivity::class.java))
+                                    startActivity(Intent(this, FavouriteActivity::class.java))
                                     finish()
                                 }
                                 .addOnFailureListener { e ->
