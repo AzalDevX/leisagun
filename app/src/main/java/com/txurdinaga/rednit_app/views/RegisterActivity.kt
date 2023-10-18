@@ -7,6 +7,7 @@ import android.text.TextUtils
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -24,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var password_edit_text: EditText
     private lateinit var repassword_edit_text: EditText
     private lateinit var submit_button: Button
-    private lateinit var login_button: Button
+    private lateinit var login_button: TextView
 
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore

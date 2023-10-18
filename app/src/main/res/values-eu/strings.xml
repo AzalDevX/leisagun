@@ -38,10 +38,10 @@
     <string name="register_age_text">Adina</string>
     <string name="register_mail_text">Posta elektronikoa</string>
     <string name="register_pass_text">Pasahitza</string>
-    <string name="register_repass_text">Errepikatu Pasahitza</string>
+    <string name="register_repass_text">Errepikatu Pasa.</string>
 
     <string name="register_submit_button">Erregistratu</string>
-    <string name="register_to_login_button">Dagoeneko kontu bat duzu? Saioa hasten saiatu zaitez!</string>
+    <string name="register_to_login_button">Dagoeneko kontu bat duzu? Saioa hasi!</string>
 
     <string name="register_credential_error_message">Mesedez, bete eremu guztiak.</string>
     <string name="register_complete_error_message">Kredentzial okerrak. Saiatu berriro mesedez.</string>
