@@ -62,4 +62,10 @@
 
     <!-- Profile Activity -->
     <string name="profile_title">Zure Profila</string>
+
+    <!-- Favorites-->
+    <string name="act1">GYM</string>
+    <string name="act2">Mendia</string>
+    <string name="act3">ibili</string>
+    <string name="act4">Zinema</string>
 </resources>
