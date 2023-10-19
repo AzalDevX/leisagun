@@ -108,5 +108,9 @@ class HomeActivity : AppCompatActivity() {
         findViewById<Button>(R.id.first_button).setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))
         }
+
+        findViewById<Button>(R.id.second_button).setOnClickListener {
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
     }
 }

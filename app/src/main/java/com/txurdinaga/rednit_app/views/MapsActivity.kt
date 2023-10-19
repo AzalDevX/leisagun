@@ -1,6 +1,7 @@
 package com.txurdinaga.rednit_app.views
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
@@ -26,6 +27,7 @@ import org.osmdroid.views.overlay.Marker
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import com.txurdinaga.rednit_app.MainActivity
 import org.osmdroid.api.IMapController
 import java.io.IOException
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
@@ -125,9 +127,13 @@ class MapsActivity : FragmentActivity() {
         if (requestCode == 1) {
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // El permiso de ubicación fue otorgado, ahora puedes obtener la ubicación actual
+                Toast.makeText(this, "Permiso de ubicación aceptado, recargando!", Toast.LENGTH_SHORT).show()
                 obtenerUbicacionActual()
+                recreate()
             } else {
                 Toast.makeText(this, "Permiso de ubicación denegado", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
         }
     }
