@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.*
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import android.widget.*
 import androidx.appcompat.widget.AppCompatImageView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.Timestamp
 
@@ -23,6 +25,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var card_subtitle : TextView
     private lateinit var card_username : TextView
     private lateinit var card_maps : ImageView
+
+    private lateinit var bottom_navigation_menu : BottomNavigationView
 
     private lateinit var firestore: FirebaseFirestore
     val activities: Array<String> = arrayOf()
@@ -103,14 +107,32 @@ class HomeActivity : AppCompatActivity() {
 
         findViewById<AppCompatImageView>(R.id.profile_picture).setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
+
+
+
+            val items = mapOf(
+                R.id.calendar to CalendarActivity::class.java,
+//                R.id.create_activity to UserProfileActivity::class.java,
+                R.id.map to MapsActivity::class.java
+            )
+            bottom_navigation_menu = findViewById(R.id.bottom_navigation_view)
+            bottom_navigation_menu.inflateMenu(R.menu.bottom_nav)
+
+            bottom_navigation_menu.setOnItemSelectedListener { menuItem ->
+                Log.d("project|menu","Click menu")
+                val activityClass = items[menuItem.itemId]
+                    startActivity(Intent(this, activityClass))
+                    true
+            }
+
         }
 
-        findViewById<Button>(R.id.first_button).setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java))
-        }
-
-        findViewById<Button>(R.id.second_button).setOnClickListener {
-            startActivity(Intent(this, MapsActivity::class.java))
-        }
+//        findViewById<Button>(R.id.first_button).setOnClickListener {
+//            startActivity(Intent(this, ChatActivity::class.java))
+//        }
+//
+//        findViewById<Button>(R.id.second_button).setOnClickListener {
+//            startActivity(Intent(this, MapsActivity::class.java))
+//        }
     }
 }

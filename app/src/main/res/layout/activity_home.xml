@@ -6,26 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".views.HomeActivity">
-    <com.google.android.material.textfield.TextInputLayout
+    <FrameLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/search_bar_input_layout"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="3dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="57dp"
-            app:layout_constraintBottom_toTopOf="@+id/search_bar">
+            android:layout_height="0dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
-    <SearchView
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/search_bar" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/profile_picture" tools:layout_editor_absoluteY="16dp"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintVertical_bias="0.244"/>
+    </FrameLayout>
     <ImageView
             android:layout_width="54dp"
             android:layout_height="54dp"
@@ -50,10 +36,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/search_bar"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="90dp">
         <!-- Add your card views here -->
         <TextView
                 android:text="@string/home_filter_gym_text"
@@ -87,14 +71,13 @@
             android:id="@+id/cardScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@+id/optionsContainer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/buttonPanel" app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintVertical_bias="0.932"> <!-- Adjust as needed -->
+            app:layout_constraintHorizontal_bias="0.05"
+    > <!-- Adjust as needed -->
 
         <LinearLayout
                 android:id="@+id/cardContainer"
@@ -107,58 +90,11 @@
 
         </LinearLayout>
     </ScrollView>
-    <LinearLayout
-            android:id="@+id/buttonPanel"
-            android:layout_width="407dp"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        <!-- Left buttons -->
-        <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="1" android:id="@+id/first_button"/>
-
-        <!-- Middle button with plus sign (overlapped) -->
-        <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1"/>
-        <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="2" android:id="@+id/second_button"/>
-        <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_gravity="center">
-
-            <!-- Middle button -->
-
-            <!-- Overlapping plus sign -->
-            <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+" android:id="@+id/middle_button"/>
-        </LinearLayout>
-
-        <!-- Right buttons -->
-        <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="3" android:id="@+id/third_button"/>
-        <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:layout_weight="1"/>
-        <Button
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:text="4" android:id="@+id/fourth_button"/>
-
-    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/bottom_navigation_view"
+    app:menu="@menu/bottom_nav"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
