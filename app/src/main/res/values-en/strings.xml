@@ -62,4 +62,10 @@
 
     <!-- Profile Activity -->
     <string name="profile_title">Your Profile</string>
+
+    <!-- Favorites-->
+    <string name="act1">GYM</string>
+    <string name="act2">Hiking</string>
+    <string name="act3">Walk</string>
+    <string name="act4">Cinema</string>
 </resources>
