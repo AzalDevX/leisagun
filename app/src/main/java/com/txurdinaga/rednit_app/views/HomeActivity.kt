@@ -49,7 +49,6 @@ class HomeActivity : AppCompatActivity() {
         collectionRef.get()
             .addOnSuccessListener { querySnapshot ->
                 try {
-
                     for (document in querySnapshot) {
                         val customCardView = layoutInflater.inflate(R.layout.custom_card_template, null)
 
@@ -111,6 +110,10 @@ class HomeActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.second_button).setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.fourth_button).setOnClickListener {
+            startActivity(Intent(this, AdventureCreatorActivity::class.java))
         }
     }
 }

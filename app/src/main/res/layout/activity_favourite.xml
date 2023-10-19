@@ -7,65 +7,36 @@
     tools:context=".views.FavouriteActivity">
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Te Gusta"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="hola"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+            android:id="@+id/pageTitle"
+            android:layout_width="408dp"
+            android:layout_height="104dp"
+            android:text="Activities"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:textSize="60sp" android:gravity="center"/>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/toggleButton"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/pageTitle"
+        app:layout_constraintBottom_toTopOf="@+id/favouritesNext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
+            android:id="@+id/favouritesLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             android:orientation="vertical">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="Switch1" />
-
-            <Switch
-                android:id="@+id/switch2"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="Switch2" />
-
-            <Switch
-                android:id="@+id/switch3"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="Switch3" />
-
-            <Switch
-                android:id="@+id/switch4"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text="Switch4" />
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/favouritesNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Siguiente"

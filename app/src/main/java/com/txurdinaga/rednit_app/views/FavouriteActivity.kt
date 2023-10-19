@@ -4,14 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Switch
+import android.widget.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
 import kotlin.collections.MutableList
 
 
 class FavouriteActivity : AppCompatActivity() {
-    private val favoriteslist: MutableList<Boolean> = mutableListOf()
+    private val favourite_activities: MutableList<Boolean> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favourite)
@@ -22,28 +23,56 @@ class FavouriteActivity : AppCompatActivity() {
 
         if (globals.current_user == null)
             startActivity(Intent(this, LoginActivity::class.java))
-        val switch1 = findViewById<Switch>(R.id.switch1)
-        switch1.setOnCheckedChangeListener { _, isChecked ->
-            // Guarda el estado del switch en el array.
-            favoriteslist.add(isChecked)
+
+        var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        val scrollView = findViewById<ScrollView>(R.id.scrollView)
+        val linearLayout = scrollView.findViewById<LinearLayout>(R.id.favouritesLinearLayout)
+
+        for ((index, activity) in globals.activity_types.withIndex()) {
+            favourite_activities.add(index, false); // fill the array
+
+            val switch = Switch(this)
+            switch.text = activity
+            switch.setOnCheckedChangeListener { _, isChecked ->
+                favourite_activities[index] = isChecked
+            }
+            linearLayout.addView(switch)
         }
 
-        val switch2 = findViewById<Switch>(R.id.switch2)
-        switch2.setOnCheckedChangeListener { _, isChecked ->
-            // Guarda el estado del switch en el array.
-            favoriteslist.add(isChecked)
-        }
+        findViewById<Button>(R.id.favouritesNext).setOnClickListener {
 
-        val switch3 = findViewById<Switch>(R.id.switch3)
-        switch3.setOnCheckedChangeListener { _, isChecked ->
-            // Guarda el estado del switch en el array.
-            favoriteslist.add(isChecked)
-        }
+            val userDocumentRef = firestore.collection("users")
+                .document(globals.current_user?.uid.toString())
 
-        val switch4 = findViewById<Switch>(R.id.switch4)
-        switch4.setOnCheckedChangeListener { _, isChecked ->
-            // Guarda el estado del switch en el array.
-            favoriteslist.add(isChecked)
+            val likedActivities = mutableListOf<String>()
+
+            // Iterate through the activity types and update the likedActivities list
+            for ((index, activity) in globals.activity_types.withIndex()) {
+                if (favourite_activities[index]) {
+                    likedActivities.add(activity)
+                }
+            }
+
+            val userMap = hashMapOf(
+                "favourite_activities" to likedActivities
+            )
+
+            userDocumentRef.update(userMap as Map<String, Any>)
+                .addOnSuccessListener {
+                    // Handle success here
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    // Handle failure here
+                    Toast.makeText(this, R.string.register_additional_info, Toast.LENGTH_SHORT).show()
+                    Log.i("project|main", "Error saving the additional information. exception ${e.localizedMessage}")
+                }
         }
+    }
+
+    override fun onBackPressed() {
+        Log.d("project|main", "FavouriteActivity onBackPressed has been called!")
     }
 }
