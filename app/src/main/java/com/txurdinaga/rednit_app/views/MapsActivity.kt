@@ -1,23 +1,21 @@
 package com.txurdinaga.rednit_app.views
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.FragmentActivity
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.MarkerOptions
 import com.txurdinaga.rednit_app.R
 import org.osmdroid.config.Configuration
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory
@@ -32,17 +30,22 @@ import org.osmdroid.api.IMapController
 import java.io.IOException
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class MapsActivity : FragmentActivity() {
     private var mapView: MapView? = null
     private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     private var myLocationOverlay: MyLocationNewOverlay? = null
+    private var predefinedLocation: GeoPoint? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         Log.d("MiTag", firestore.toString())
         // Configura la biblioteca osmdroid
         Configuration.getInstance().load(applicationContext, getPreferences(MODE_PRIVATE))
+
 
         // Inicializa el MapView
         mapView = findViewById(R.id.mapView)
@@ -51,6 +54,15 @@ class MapsActivity : FragmentActivity() {
         mapView!!.setMultiTouchControls(true)
         mapView?.setMinZoomLevel(10.0)
         mapView?.setMaxZoomLevel(19.0)
+
+
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+
+        backButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         // Establece una ubicación inicial (por ejemplo, el centro de la ciudad)
         val geocoder = Geocoder(this)
@@ -75,13 +87,13 @@ class MapsActivity : FragmentActivity() {
                 // Esto se ejecutará cuando se obtenga la ubicación
                 val location = myLocationOverlay?.myLocation
                 if (location != null) {
-                    val geoPoint = GeoPoint(location.latitude, location.longitude)
-                    Log.d("MiTag", geoPoint.toString())
+                    predefinedLocation = GeoPoint(location.latitude, location.longitude)
+                    Log.d("MiTag", predefinedLocation.toString())
 
                     runOnUiThread {
                         // Actualiza la vista en el hilo principal
                         val mapController: IMapController? = mapView?.controller
-                        mapController?.setCenter(geoPoint)
+                        mapController?.setCenter(predefinedLocation)
                         // Puedes hacer algo con las coordenadas aquí
                     }
                 }
@@ -104,13 +116,18 @@ class MapsActivity : FragmentActivity() {
                         if (latLng != null) {
                             val latitude = latLng.first
                             val longitude = latLng.second
+                            val title = document.getString("actividad")
+                            val describe = document.getTimestamp("hora")
+                            val fecha = describe?.toDate()
+                            val simple = SimpleDateFormat("dd/MM/yyyy ' - ' HH:mm", Locale.getDefault())
+                            val formattedDate = simple.format(fecha)
                             Log.d("MiTag", latLng.toString())
                             // Crea un nuevo marcador para esta ubicación
                             val marker = Marker(mapView)
                             val geoPoint = GeoPoint(latitude, longitude)
                             marker.position = geoPoint
-                            marker.title = "Marker Title"
-                            marker.snippet = "Marker Description"
+                            marker.title = title?.capitalize()
+                            marker.snippet = formattedDate
 
                             mapView?.overlays?.add(marker)
                         }
@@ -120,6 +137,80 @@ class MapsActivity : FragmentActivity() {
                 }
 
             })
+        // Dentro de la función onCreate o donde tengas el botón "Encontrar actividades cercanas"
+        val btnEncontrarActividadesCercanas = findViewById<Button>(R.id.findActivitiesButton)
+        val centerMapButton = findViewById<ImageButton>(R.id.centerMapButton)
+        centerMapButton.setOnClickListener {
+            // Centra el mapa en la ubicación predefinida (reemplaza con tus coordenadas)
+
+            val mapController: IMapController = mapView!!.controller
+            mapController.setZoom(17.0)
+            mapController.setCenter(predefinedLocation)
+        }
+
+        btnEncontrarActividadesCercanas.setOnClickListener {
+            // Obtén tu ubicación actual
+            val myLocation = myLocationOverlay?.myLocation
+            if (myLocation != null) {
+                val myLatLng = Pair(myLocation.latitude, myLocation.longitude)
+                var closestMarker: Marker? = null
+                var minDistance: Double = Double.MAX_VALUE
+
+                // Itera a través de todas las marcas en el mapa
+                for (overlay in mapView?.overlays!!) {
+                    if (overlay is Marker) {
+                        val marker = overlay as Marker
+                        val markerLatLng = Pair(marker.position.latitude, marker.position.longitude)
+
+                        // Calcula la distancia entre tu ubicación y la marca
+                        val distance = calculateDistance(myLatLng, markerLatLng)
+
+                        if (distance < minDistance) {
+                            // Actualiza la actividad más cercana encontrada hasta ahora
+                            minDistance = distance
+                            closestMarker = marker
+                        }
+                    }
+                }
+
+                // Comprueba si se encontró la actividad más cercana
+                if (closestMarker != null) {
+                    // Muestra la distancia, nombre y fecha en un cuadro de diálogo o de otra manera
+                    val distanciaEnKilometros = minDistance
+                    val nombreActividad = closestMarker.title
+                    val fechaActividad = closestMarker.snippet
+
+                    val mensaje = "La actividad más cercana es \"$nombreActividad\" el $fechaActividad, a una distancia de ${distanciaEnKilometros.toInt()} km de tu ubicación."
+
+                    // Muestra el mensaje en un cuadro de diálogo o en un TextView, como prefieras
+                    // Por ejemplo, usando un AlertDialog
+                    val alertDialog = AlertDialog.Builder(this)
+                    alertDialog.setTitle("Actividad más cercana")
+                    alertDialog.setMessage(mensaje)
+                    alertDialog.setPositiveButton("Aceptar", null)
+                    alertDialog.show()
+                } else {
+                    // No se encontraron actividades en el mapa
+                    // Puedes mostrar un mensaje indicando que no hay actividades cercanas
+                    Toast.makeText(this, "No se encontraron actividades cercanas.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+
+
+    }
+
+    fun calculateDistance(latLng1: Pair<Double, Double>, latLng2: Pair<Double, Double>): Double {
+        // Fórmula de la distancia haversine
+        val radius = 6371 // Radio de la Tierra en kilómetros
+        val dLat = Math.toRadians(latLng2.first - latLng1.first)
+        val dLon = Math.toRadians(latLng2.second - latLng1.second)
+        val a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(Math.toRadians(latLng1.first)) * Math.cos(Math.toRadians(latLng2.first)) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2)
+        val c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+        return radius * c
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

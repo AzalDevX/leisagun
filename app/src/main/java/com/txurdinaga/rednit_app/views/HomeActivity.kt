@@ -1,5 +1,6 @@
 package com.txurdinaga.rednit_app.views
 
+
 import android.content.Intent
 import androidx.appcompat.app.*
 import android.os.Bundle
@@ -111,6 +112,9 @@ class HomeActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.second_button).setOnClickListener {
             startActivity(Intent(this, MapsActivity::class.java))
+        }
+        findViewById<Button>(R.id.third_button).setOnClickListener {
+            startActivity(Intent(this, CalendarActivity::class.java))
         }
     }
 }

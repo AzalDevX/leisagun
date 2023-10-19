@@ -31,12 +31,14 @@
                 android:gravity="start"
                 android:padding="8dp"/>
 
+
         <!-- Fila 2 (Subtítulo) -->
         <TextView
                 android:id="@+id/card_subtitle_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start"
+                android:layout_marginLeft="10dp"
                 android:padding="8dp"/>
 
         <!-- Fila 3 (Username a la derecha) -->
