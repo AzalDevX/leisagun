@@ -1,5 +1,6 @@
 package com.txurdinaga.rednit_app.views
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -34,6 +35,7 @@ class MessageAdapter(private val messages: List<Message>, private val localUserI
         val messageText: TextView = itemView.findViewById(R.id.messageText)
     }
 
+    @SuppressLint("ResourceType")
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.drawable.chat_message_item, parent, false)
         return MessageViewHolder(view)
@@ -41,12 +43,14 @@ class MessageAdapter(private val messages: List<Message>, private val localUserI
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
+        
+        var sender_name = if (message.senderId?.contains("@") == true) { message.senderId?.split("@")?.get(0) } else { message.senderId }
 
-        holder.senderName.text = message.senderId // You can customize this based on your sender info
+        holder.senderName.text = sender_name
         holder.messageText.text = message.messageText
 
         // Check if the message is from the local user
-        if (message.senderId == localUserId) {
+        if (sender_name == localUserId) {
             // Align to the right for local user
             val layoutParams = holder.messageText.layoutParams as LinearLayout.LayoutParams
             layoutParams.gravity = Gravity.END
@@ -84,7 +88,7 @@ class ChatActivity : AppCompatActivity() {
         if (globals.current_user == null)
             startActivity(Intent(this, LoginActivity::class.java))
 
-        val messageAdapter = MessageAdapter(messageList, globals.current_user?.email.toString())
+        val messageAdapter = MessageAdapter(messageList, globals.current_user?.email?.split("@")?.get(0).toString())
         val recyclerView = findViewById<RecyclerView>(R.id.chatRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = messageAdapter
