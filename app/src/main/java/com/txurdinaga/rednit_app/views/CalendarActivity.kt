@@ -5,6 +5,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -21,12 +22,14 @@ import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import java.util.Locale
 
 class CalendarActivity : AppCompatActivity() {
     private val meses = arrayOf("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
     private val db = FirebaseFirestore.getInstance()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
@@ -88,11 +91,10 @@ class CalendarActivity : AppCompatActivity() {
                         val latLng = loc?.let { getAddressLatLng(geocoder, it) }
                         val latitude = latLng?.first
                         val longitude = latLng?.second
-                        val simple = SimpleDateFormat("dd/MM/yyyy ' - ' HH:mm", Locale.getDefault())
+                        val simple = SimpleDateFormat("dd/MM/yyyy, HH:mm", Locale.getDefault())
                         val formattedDate = simple.format(hora)
-                        val gmmIntentUri = Uri.parse("$latitude,$longitude")
 
-                        "$actividadName\n$formattedDate\n$descrip\n$gmmIntentUri"
+                        "$actividadName\n$formattedDate\n$descrip\n$loc\n$latitude,$longitude"
 
 
                     }
@@ -104,6 +106,7 @@ class CalendarActivity : AppCompatActivity() {
                         val cardTitle = view.findViewById<TextView>(R.id.card_title_activity)
                         val cardSubtitle = view.findViewById<TextView>(R.id.card_subtitle_activity)
                         val cardUsername = view.findViewById<TextView>(R.id.card_username_activity)
+                        val metaDataa = view.findViewById<TextView>(R.id.textView4)
 
                         Log.d("MiTag",actividadText )
                         // Split de la cadena para obtener los detalles
@@ -111,7 +114,38 @@ class CalendarActivity : AppCompatActivity() {
 
                         // Set the title, subtitle, and description
                         cardTitle.text = parts[0].trim()
-                        cardSubtitle.text = parts[1].trim() + "\n" + parts[2].trim()+ "\n" + parts[3].trim()
+                        cardSubtitle.text = parts[1].trim() + "\n" + parts[2].trim()
+                        cardUsername.text = parts[3].trim()
+                        metaDataa.text = parts[4].trim()
+
+                        val latitude =  parts[4].trim().split(",")[0]
+                        val longitude = parts[4].trim().split(",")[1]
+                        cardUsername.setOnClickListener {
+                             // Nombre del marcador en el mapa (opcional)
+                            Log.d("mitag", "$latitude")
+                            val gmmIntentUri = Uri.parse("geo:$latitude,$longitude?q=$latitude,$longitude")
+                            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                            mapIntent.setPackage("com.google.android.apps.maps")  // Abre específicamente Google Maps
+
+                            if (mapIntent.resolveActivity(packageManager) != null) {
+                                startActivity(mapIntent)
+                            }
+                        }
+                        cardSubtitle.setOnClickListener {
+
+                            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy, HH:mm")
+                            val date = LocalDateTime.parse(parts[1].trim(), formatter)
+                            val cal : Calendar = Calendar.getInstance()
+                            cal.timeInMillis = date.toInstant(java.time.ZoneOffset.UTC).toEpochMilli();
+
+                            val calendarIntent = Intent(Intent.ACTION_INSERT)
+                                .setData(CalendarContract.Events.CONTENT_URI)
+                                .putExtra(CalendarContract.Events.TITLE, parts[0].trim())
+                                .putExtra(CalendarContract.Events.DESCRIPTION,parts[2].trim() )
+                                .putExtra(CalendarContract.Events.EVENT_LOCATION, parts[3].trim())
+                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, cal.timeInMillis)
+                            startActivity(calendarIntent)
+                        }
 
                         val layoutParams = LinearLayout.LayoutParams(
                             LinearLayout.LayoutParams.MATCH_PARENT,

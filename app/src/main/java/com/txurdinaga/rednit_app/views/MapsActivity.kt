@@ -155,6 +155,7 @@ class MapsActivity : FragmentActivity() {
                 val myLatLng = Pair(myLocation.latitude, myLocation.longitude)
                 var closestMarker: Marker? = null
                 var minDistance: Double = Double.MAX_VALUE
+                var marklatlang: Pair<Double, Double>? = null
 
                 // Itera a través de todas las marcas en el mapa
                 for (overlay in mapView?.overlays!!) {
@@ -169,6 +170,7 @@ class MapsActivity : FragmentActivity() {
                             // Actualiza la actividad más cercana encontrada hasta ahora
                             minDistance = distance
                             closestMarker = marker
+                            marklatlang = markerLatLng
                         }
                     }
                 }
@@ -189,6 +191,11 @@ class MapsActivity : FragmentActivity() {
                     alertDialog.setMessage(mensaje)
                     alertDialog.setPositiveButton("Aceptar", null)
                     alertDialog.show()
+                    val geoPoint = marklatlang?.let { it1 -> GeoPoint(it1.first, marklatlang.second) }
+                    val mapController: IMapController = mapView!!.controller
+                    mapController.setZoom(17.0)
+                    mapController.setCenter(geoPoint)
+
                 } else {
                     // No se encontraron actividades en el mapa
                     // Puedes mostrar un mensaje indicando que no hay actividades cercanas

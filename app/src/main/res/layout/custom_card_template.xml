@@ -51,12 +51,22 @@
 
             <!-- Username a la derecha -->
             <TextView
+                    android:text=""
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView4"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    />
+            <TextView
                     android:id="@+id/card_username_activity"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
             android:gravity="end"
             android:padding="8dp"/>
+
+
         </LinearLayout>
 
     </LinearLayout>
