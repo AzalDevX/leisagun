@@ -1,5 +1,6 @@
 package com.txurdinaga.rednit_app.views
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -118,10 +119,8 @@ class HomeActivity : AppCompatActivity() {
             Log.d("project|home", "map_button clicked moving to MapsActivity")
             startActivity(Intent(this, MapsActivity::class.java))
         }
-
-        findViewById<ImageButton>(R.id.chat_button).setOnClickListener{
-            Log.d("project|home", "chatt_button clicked moving to MapsActivity")
-            startActivity(Intent(this, ChatActivity::class.java))
+        findViewById<Button>(R.id.third_button).setOnClickListener {
+            startActivity(Intent(this, CalendarActivity::class.java))
         }
     }
 }
