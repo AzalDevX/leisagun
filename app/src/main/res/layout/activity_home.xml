@@ -18,40 +18,52 @@
     <!-- Panel at the bottom with five buttons -->
 
     <androidx.cardview.widget.CardView
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/search_bar_container"
             android:background="@android:color/transparent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-        <EditText
-                android:id="@+id/search_bar"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:paddingStart="16dp"
-                android:textColor="@color/black"
-                android:background="@drawable/edittext_bg"
-                android:textColorHint="@color/input_hint_color"
-                android:hint="Search..."
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="20dp"
-                android:inputType="text"
-        />
-        <ImageView
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                app:srcCompat="@drawable/simpsons"
-                android:id="@+id/profile_picture"
-                android:background="@drawable/rounded_background"
-                android:scaleType="centerCrop"
-        />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+            <Button
+                    android:id="@+id/filterButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Tags" />
+            <EditText
+                    android:id="@+id/search_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edittext_bg"
+                    android:textColorHint="@color/input_hint_color"
+                    android:hint="Search..."
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:inputType="text"
+            />
+            <ImageView
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    app:srcCompat="@drawable/simpsons"
+                    android:id="@+id/profile_picture"
+                    android:background="@drawable/rounded_background"
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="10dp"
+            />
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
-    <Button
-            android:id="@+id/filterButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Select Tags" tools:ignore="MissingConstraints"/>
+
     <ScrollView
             android:id="@+id/cardScrollView"
             android:layout_width="match_parent"

@@ -63,6 +63,25 @@ class Utilities : Application(){
         return null
     }
 
+    fun getStreetNameFromLatLng(context: Context, latitude: Double, longitude: Double): String? {
+        val geocoder = Geocoder(context, Locale.getDefault())
+        try {
+            val addressList: List<Address>? = geocoder.getFromLocation(latitude, longitude, 1)
+            if (addressList != null && addressList.isNotEmpty()) {
+                val address = addressList[0]
+                // Concatenate address components
+                val street = address.thoroughfare // Street name
+                val city = address.locality // City
+                val state = address.adminArea // State
+                val country = address.countryName // Country
+                return "$street, $city, $state, $country"
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return null
+    }
+
     fun String.capitalized(): String {
         return this.replaceFirstChar {
             if (it.isLowerCase())
