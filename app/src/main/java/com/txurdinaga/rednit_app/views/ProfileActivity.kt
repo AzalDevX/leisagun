@@ -26,13 +26,12 @@ class ProfileActivity : AppCompatActivity() {
         if (globals.current_user == null)
             startActivity(Intent(this, LoginActivity::class.java))
 
-        findViewById<TextView>(R.id.age_viewer).text = "Age 19"
-        findViewById<TextView>(R.id.user_and_surname_view).text = globals.current_user?.displayName ?: "unknown"
+        findViewById<TextView>(R.id.age_viewer).text = globals.user_age ?: "Unknown age"
+        findViewById<TextView>(R.id.user_and_surname_view).text = globals.user_name ?: globals.current_user?.displayName
         findViewById<TextView>(R.id.email_address_view).text = globals.current_user?.email ?: "unknown"
 
         val languagePicker = findViewById<Spinner>(R.id.language_picker)
-        val languages = arrayOf("Español", "English", "Euskera")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, languages)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, globals.languages)
         languagePicker.adapter = adapter
 
         val defaultSelection = when (globals.app_language) {
@@ -43,22 +42,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         languagePicker.setSelection(defaultSelection)
-
-        findViewById<Button>(R.id.logout_user_button).setOnClickListener {
-            /**
-             * @description: Clear stored credentials
-             */
-            val sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("email", null)
-            editor.putString("password", null)
-            editor.apply()
-
-            globals.current_user = null;
-
-            finish()
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
 
         languagePicker.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -87,6 +70,26 @@ class ProfileActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 // Handle when nothing is selected
             }
+        }
+
+        findViewById<Button>(R.id.logout_user_button).setOnClickListener {
+            /**
+             * @description: Clear stored credentials
+             */
+            val sharedPreferences = getSharedPreferences("userCredentials", MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("email", null)
+            editor.putString("password", null)
+            editor.apply()
+
+            globals.current_user = null;
+
+            finish()
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.select_favourites).setOnClickListener {
+            startActivity(Intent(this, FavouriteActivity::class.java))
         }
 
         /**

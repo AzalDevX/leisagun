@@ -8,11 +8,14 @@ import android.widget.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
+import com.txurdinaga.rednit_app.classes.TagSelectionPopup
 import kotlin.collections.MutableList
 
 
 class FavouriteActivity : AppCompatActivity() {
     private val favourite_activities: MutableList<Boolean> = mutableListOf()
+    private val favourite_activities_checkbox: MutableList<Switch> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favourite)
@@ -26,6 +29,9 @@ class FavouriteActivity : AppCompatActivity() {
 
         var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
+        val userDocumentRef = firestore.collection("users")
+            .document(globals.current_user?.uid.toString())
+
         val scrollView = findViewById<ScrollView>(R.id.scrollView)
         val linearLayout = scrollView.findViewById<LinearLayout>(R.id.favouritesLinearLayout)
 
@@ -33,17 +39,49 @@ class FavouriteActivity : AppCompatActivity() {
             favourite_activities.add(index, false); // fill the array
 
             val switch = Switch(this)
-            switch.text = activity
+            switch.text = activity.replaceFirstChar { it.uppercase() }
             switch.setOnCheckedChangeListener { _, isChecked ->
                 favourite_activities[index] = isChecked
             }
+            favourite_activities_checkbox.add(index, switch);
+
             linearLayout.addView(switch)
         }
 
-        findViewById<Button>(R.id.favouritesNext).setOnClickListener {
+//        userDocumentRef.get()
+//            .addOnSuccessListener { documentSnapshot ->
+//                if (documentSnapshot.exists()) {
+//                    val userData = documentSnapshot.data
+//
+//                    // Check if the 'favourite_activities' field exists in the document
+//                    if (userData != null && userData.containsKey("favourite_activities")) {
+//                        val favouriteActivitiesFromFirestore = userData["favourite_activities"] as List<String>
+//
+//                        // Iterate through the activity types and update the switches
+//                        for ((index, activity) in globals.activity_types.withIndex()) {
+//                            val isLiked = favouriteActivitiesFromFirestore.contains(activity)
+//                            Log.d("project|main", "($index) local $activity is in firestore? $isLiked")
+//                            favourite_activities[index] = isLiked
+//                            favourite_activities_checkbox[index].isChecked = isLiked
+//                        }
+//                    }
+//                }
+//            }
+//            .addOnFailureListener { e ->
+//                // Handle the case when there's an error fetching the document
+//                Toast.makeText(this, "Error fetching data: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+//                Log.e("project|main", "Error fetching user data: ${e.localizedMessage}")
+//            }
 
-            val userDocumentRef = firestore.collection("users")
-                .document(globals.current_user?.uid.toString())
+        for ((index, activity) in globals.activity_types.withIndex()) {
+            val isLiked = globals.user_favourite_activities.contains(activity)
+            Log.d("project|main", "($index) local $activity is in user_favourite_activities? $isLiked")
+            favourite_activities[index] = isLiked
+            favourite_activities_checkbox[index].isChecked = isLiked
+        }
+
+
+        findViewById<Button>(R.id.favouritesNext).setOnClickListener {
 
             val likedActivities = mutableListOf<String>()
 
@@ -58,6 +96,8 @@ class FavouriteActivity : AppCompatActivity() {
                 "favourite_activities" to likedActivities
             )
 
+            globals.user_favourite_activities = likedActivities.toTypedArray()
+
             userDocumentRef.update(userMap as Map<String, Any>)
                 .addOnSuccessListener {
                     // Handle success here
@@ -70,6 +110,7 @@ class FavouriteActivity : AppCompatActivity() {
                     Log.i("project|main", "Error saving the additional information. exception ${e.localizedMessage}")
                 }
         }
+
     }
 
     override fun onBackPressed() {

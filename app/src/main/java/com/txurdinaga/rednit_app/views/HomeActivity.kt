@@ -12,6 +12,7 @@ import com.google.firebase.Timestamp
 
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
+import com.txurdinaga.rednit_app.classes.TagSelectionPopup
 import java.text.SimpleDateFormat
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
@@ -60,21 +61,16 @@ class HomeActivity : AppCompatActivity() {
                         if (document == null)
                             continue
 
-                        // Accede a los datos de cada documento
                         val data = document.data
 
-                        // Accede al campo "timestamp" del documento y obtiene un objeto Timestamp
                         val timestamp = data["hora"] as Timestamp
-                        // Convierte el Timestamp a un objeto LocalDateTime en UTC
                         val localDateTimeUtc =
                             timestamp.toDate().toInstant().atOffset(ZoneOffset.UTC).toLocalDateTime().plusHours(2)
 
-                        // Formatea la fecha y hora
                         val formatter = DateTimeFormatter.ofPattern("dd-MM HH:mm")
                         val formattedDate = localDateTimeUtc.format(formatter)
 
 
-                        // Establece los textos personalizados
                         card_title.text = data["actividad"].toString().uppercase(Locale.getDefault())
                         card_subtitle.text = "${data["localizacion"].toString()} | $formattedDate"
                         card_username.text = data["id_usuario"].toString()
@@ -95,10 +91,16 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                // Manejo de errores
                 Log.e("project|home", "Error while getting cards $exception")
-
             }
+
+        findViewById<Button>(R.id.filterButton).setOnClickListener {
+            val tagSelectionPopup = TagSelectionPopup()
+            val args = Bundle()
+            args.putStringArray("activityTypes", globals.activity_types)
+            tagSelectionPopup.arguments = args
+            tagSelectionPopup.show(supportFragmentManager, "TagSelectionPopup")
+        }
 
         findViewById<AppCompatImageView>(R.id.profile_picture).setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))

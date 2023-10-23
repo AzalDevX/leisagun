@@ -11,4 +11,7 @@ class Globals : Application(){
 
     val languages = arrayOf("Español", "English", "Euskera")
     val activity_types = arrayOf("gym", "hiking", "cinema",  "walk", "shopping", "picnic", "cycling", "urban exploration", "photography", "seks", "running", "sports", "phising", "bird watching")
+    var user_favourite_activities : Array<String> = arrayOf()
+    var user_name : String = "Unknown Name"
+    var user_age : String = "Unknown Age"
 }
