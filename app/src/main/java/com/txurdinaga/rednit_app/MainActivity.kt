@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.txurdinaga.rednit_app.classes.Globals
 import com.txurdinaga.rednit_app.classes.Utilities
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         FirebaseApp.initializeApp(this)
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         if (globals.current_user != null)
             startActivity(Intent(this, HomeActivity::class.java))
@@ -76,6 +78,37 @@ class MainActivity : AppCompatActivity() {
                         val user = auth.currentUser
                         Log.i("project|autologin", "Automatically log-in in the user: ${user?.displayName ?: user?.email}")
                         globals.current_user = user
+
+                        /**
+                         * Get user information from the user and other information
+                         */
+                        val userDocumentRef = firestore.collection("users")
+                            .document(user?.uid.toString())
+
+                        userDocumentRef.get()
+                            .addOnSuccessListener { documentSnapshot ->
+                                if (documentSnapshot.exists()) {
+                                    val userData = documentSnapshot.data
+
+                                    if (userData == null)
+                                        return@addOnSuccessListener
+
+                                    // Check if the 'favourite_activities' field exists in the document
+                                    if (userData.containsKey("favourite_activities"))
+                                        globals.user_favourite_activities = (userData["favourite_activities"] as List<String>).toTypedArray();
+
+                                    if (userData.containsKey("age"))
+                                        globals.user_age = userData["age"] as String;
+
+                                    if (userData.containsKey("fullname"))
+                                        globals.user_name = userData["fullname"] as String;
+                                }
+                            }
+                            .addOnFailureListener { e ->
+                                // Handle the case when there's an error fetching the document
+                                Toast.makeText(this, "Error fetching data: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                                Log.e("project|main", "Error fetching user data: ${e.localizedMessage}")
+                            }
 
                         Toast.makeText(this, "${getString(R.string.autologin_success)} ${user?.displayName ?: user?.email}!", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, HomeActivity::class.java))

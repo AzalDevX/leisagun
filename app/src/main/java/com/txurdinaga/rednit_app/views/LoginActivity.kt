@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.*
+import com.google.firebase.firestore.FirebaseFirestore
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
 
@@ -31,6 +32,8 @@ class LoginActivity : AppCompatActivity() {
 
         if (globals.current_user != null)
             startActivity(Intent(this, HomeActivity::class.java))
+
+        var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         email_edit_text = findViewById(R.id.email_edit_text)
         password_edit_text = findViewById(R.id.password_edit_text)
@@ -61,6 +64,37 @@ class LoginActivity : AppCompatActivity() {
                         editor.putString("email", email)
                         editor.putString("password", password)
                         editor.apply()
+
+                        /**
+                         * Get user information from the user and other information
+                         */
+                        val userDocumentRef = firestore.collection("users")
+                            .document(user?.uid.toString())
+
+                        userDocumentRef.get()
+                            .addOnSuccessListener { documentSnapshot ->
+                                if (documentSnapshot.exists()) {
+                                    val userData = documentSnapshot.data
+
+                                    if (userData == null)
+                                        return@addOnSuccessListener
+
+                                    // Check if the 'favourite_activities' field exists in the document
+                                    if (userData.containsKey("favourite_activities"))
+                                        globals.user_favourite_activities = (userData["favourite_activities"] as List<String>).toTypedArray();
+
+                                    if (userData.containsKey("age"))
+                                        globals.user_age = userData["age"] as String;
+
+                                    if (userData.containsKey("fullname"))
+                                        globals.user_name = userData["fullname"] as String;
+                                }
+                            }
+                            .addOnFailureListener { e ->
+                                // Handle the case when there's an error fetching the document
+                                Toast.makeText(this, "Error fetching data: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
+                                Log.e("project|main", "Error fetching user data: ${e.localizedMessage}")
+                            }
 
                         Log.i("project|login", "User has been logged-in successfully, redirecting to home...")
 

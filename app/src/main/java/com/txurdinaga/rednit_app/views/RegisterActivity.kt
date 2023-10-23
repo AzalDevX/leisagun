@@ -99,6 +99,9 @@ class RegisterActivity : AppCompatActivity() {
                                     editor.putString("password", password)
                                     editor.apply()
 
+                                    globals.user_age = age;
+                                    globals.user_name = fullname;
+
                                     startActivity(Intent(this, FavouriteActivity::class.java))
                                     finish()
                                 }
