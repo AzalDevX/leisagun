@@ -122,7 +122,7 @@ class HomeActivity : AppCompatActivity() {
             Log.d("project|home", "map_button clicked moving to MapsActivity")
             startActivity(Intent(this, MapsActivity::class.java))
         }
-        findViewById<Button>(R.id.third_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.calendar_button).setOnClickListener {
             startActivity(Intent(this, CalendarActivity::class.java))
         }
     }
