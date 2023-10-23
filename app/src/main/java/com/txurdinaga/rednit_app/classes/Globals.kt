@@ -8,4 +8,7 @@ class Globals : Application(){
 
     var current_user: FirebaseUser ?= null;
     var app_language = "eu";
+
+    val languages = arrayOf("Español", "English", "Euskera")
+    val activity_types = arrayOf("gym", "hiking", "cinema",  "walk", "shopping", "picnic", "cycling", "urban exploration", "photography", "seks", "running", "sports", "phising", "bird watching")
 }

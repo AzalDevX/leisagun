@@ -49,7 +49,6 @@ class HomeActivity : AppCompatActivity() {
         collectionRef.get()
             .addOnSuccessListener { querySnapshot ->
                 try {
-
                     for (document in querySnapshot) {
                         val customCardView = layoutInflater.inflate(R.layout.custom_card_template, null)
 
