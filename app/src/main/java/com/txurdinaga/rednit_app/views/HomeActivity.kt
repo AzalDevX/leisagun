@@ -1,19 +1,18 @@
 package com.txurdinaga.rednit_app.views
 
 import android.content.Intent
-import androidx.appcompat.app.*
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import android.widget.*
+import androidx.appcompat.app.*
 import androidx.appcompat.widget.AppCompatImageView
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.Timestamp
-
+import com.google.firebase.firestore.FirebaseFirestore
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
 import com.txurdinaga.rednit_app.classes.TagSelectionPopup
 import java.text.SimpleDateFormat
+import org.checkerframework.checker.units.qual.A
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -24,6 +23,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var card_subtitle : TextView
     private lateinit var card_username : TextView
     private lateinit var card_maps : ImageView
+
+    private lateinit var search_array : Array<String>
 
     private lateinit var firestore: FirebaseFirestore
     val activities: Array<String> = arrayOf()
@@ -106,16 +107,24 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        findViewById<Button>(R.id.first_button).setOnClickListener {
-            startActivity(Intent(this, ChatActivity::class.java))
+        findViewById<ImageButton>(R.id.calendar_button).setOnClickListener{
+            Log.d("project|home", "calendar_button clicked moving to CalendarActivity")
+            startActivity(Intent(this, CalendarActivity::class.java))
         }
 
-        findViewById<Button>(R.id.second_button).setOnClickListener {
+        findViewById<ImageButton>(R.id.create_button).setOnClickListener{
+            Log.d("project|home", "create_button clicked moving to AdventureCreatorActivity")
+            startActivity(Intent(this, AdventureCreatorActivity::class.java))
+        }
+
+        findViewById<ImageButton>(R.id.map_button).setOnClickListener{
+            Log.d("project|home", "map_button clicked moving to MapsActivity")
             startActivity(Intent(this, MapsActivity::class.java))
         }
 
-        findViewById<Button>(R.id.fourth_button).setOnClickListener {
-            startActivity(Intent(this, AdventureCreatorActivity::class.java))
+        findViewById<ImageButton>(R.id.chat_button).setOnClickListener{
+            Log.d("project|home", "chatt_button clicked moving to MapsActivity")
+            startActivity(Intent(this, ChatActivity::class.java))
         }
     }
 }
