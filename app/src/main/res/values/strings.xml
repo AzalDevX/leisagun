@@ -63,6 +63,12 @@
     <!-- Profile Activity -->
     <string name="profile_title">Tu Perfil</string>
 
+    <!--  Menu -->
+    <string name="calendar">Calendario</string>
+    <string name="create_activity">Crear</string>
+    <string name="map">Mapa</string>
+
+</resources>
     <string name="back_button_description" translatable="false">Descripcion</string>
         <string-array name="months">
             <item>Enero</item>

@@ -62,4 +62,9 @@
 
     <!-- Profile Activity -->
     <string name="profile_title">Your Profile</string>
+
+    <!--  Menu -->
+    <string name="calendar">Calendar</string>
+    <string name="create_activity">Create</string>
+    <string name="map">Map</string>
 </resources>

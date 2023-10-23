@@ -102,7 +102,6 @@ class ChatActivity : AppCompatActivity() {
             message.senderId = globals.current_user?.email.toString();
             message.timestamp = System.currentTimeMillis();
 
-            message_input.text = ""
             // Push the message to the "messages" node
             val messageRef = databaseRef.child("messages").push()
             messageRef.setValue(message)

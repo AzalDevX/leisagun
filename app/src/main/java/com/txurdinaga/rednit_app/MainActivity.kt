@@ -13,6 +13,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.txurdinaga.rednit_app.classes.Globals
 import com.txurdinaga.rednit_app.classes.Utilities
+import com.txurdinaga.rednit_app.views.FavouriteActivity
 import com.txurdinaga.rednit_app.views.HomeActivity
 import com.txurdinaga.rednit_app.views.LoginActivity
 import java.util.*
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         /**
          * @description: override startup page to your own, uncomment to avoid logging/register
          * */
-//        startActivity(Intent(this, MainActivity::class.java))
+//        startActivity(Intent(this, FavouriteActivity::class.java))
 
         /**
          * @description: Check local credentials to automatically log in the user
