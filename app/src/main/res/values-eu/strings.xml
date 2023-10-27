@@ -19,7 +19,7 @@
     <!-- Main Activity -->
     <string name="autologin_success">Ongi etorri</string>
     <string name="autologin_error">Errore bat gertatu da saioa hasten saiatzean</string>
-    <string name="search_noresult">No filters match</string>
+    <string name="search_noresult">Filter errorea</string>
 
 
     <!-- Login_Activity -->
