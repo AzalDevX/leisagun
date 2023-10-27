@@ -2,6 +2,7 @@ package com.txurdinaga.rednit_app.views
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -14,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
@@ -33,6 +35,7 @@ class MessageAdapter(private val messages: List<Message>, private val localUserI
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val senderName: TextView = itemView.findViewById(R.id.messageSenderName)
         val messageText: TextView = itemView.findViewById(R.id.messageText)
+        val messageCardView: CardView = itemView.findViewById(R.id.cardmessage)
     }
 
     @SuppressLint("ResourceType")
@@ -56,12 +59,14 @@ class MessageAdapter(private val messages: List<Message>, private val localUserI
             layoutParams.gravity = Gravity.END
             holder.senderName.layoutParams = layoutParams
             holder.messageText.layoutParams = layoutParams
+            holder.messageCardView.setCardBackgroundColor(Color.WHITE)
         } else {
             // Align to the left for others
             val layoutParams = holder.messageText.layoutParams as LinearLayout.LayoutParams
             layoutParams.gravity = Gravity.START
             holder.senderName.layoutParams = layoutParams
             holder.messageText.layoutParams = layoutParams
+            holder.messageCardView.setCardBackgroundColor(Color.GRAY)
         }
     }
 
