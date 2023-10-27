@@ -29,7 +29,8 @@
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:gravity="start"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:textColor="#ffff"/>
 
 
         <!-- Fila 2 (Subtítulo) -->
@@ -39,7 +40,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:layout_marginLeft="10dp"
-                android:padding="8dp"/>
+                android:padding="8dp"
+                android:textColor="#ffff"/>
 
         <!-- Fila 3 (Username a la derecha) -->
         <LinearLayout
@@ -57,6 +59,7 @@
                     android:id="@+id/textView4"
                     android:layout_weight="1"
                     android:visibility="invisible"
+                    android:textColor="#ffff"
                     />
             <TextView
                     android:id="@+id/card_username_activity"
@@ -64,7 +67,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
             android:gravity="end"
-            android:padding="8dp"/>
+            android:padding="8dp"
+                    android:textColor="#ffff"/>
 
 
         </LinearLayout>
@@ -77,6 +81,7 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:padding="25dp"
+
         />
 
 
