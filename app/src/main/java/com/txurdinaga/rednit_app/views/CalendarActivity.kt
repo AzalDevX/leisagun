@@ -43,7 +43,6 @@ class CalendarActivity : AppCompatActivity() {
         }
 
         val monthNumberPicker = findViewById<NumberPicker>(R.id.monthNumberPicker)
-        val currentMonthTextView = findViewById<TextView>(R.id.currentMonthTextView)
         val actividadesListView = findViewById<ListView>(R.id.actividadesListView)
 
         // Configura el NumberPicker
@@ -51,10 +50,14 @@ class CalendarActivity : AppCompatActivity() {
         monthNumberPicker.maxValue = meses.size - 1
         monthNumberPicker.displayedValues = meses
 
+        val currentMonth = Calendar.getInstance().get(Calendar.MONTH)
+        monthNumberPicker.value = currentMonth
+        filterAndDisplayActivities(meses[currentMonth], actividadesListView)
+
+
         // Escucha los cambios en el NumberPicker
         monthNumberPicker.setOnValueChangedListener { _, _, newVal ->
             // Actualiza el TextView con el mes seleccionado
-            currentMonthTextView.text = meses[newVal]
             // Filtra y muestra las actividades para el mes seleccionado
             val selectedMonth = meses[newVal]
             filterAndDisplayActivities(selectedMonth, actividadesListView)
