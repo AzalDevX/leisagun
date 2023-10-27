@@ -8,94 +8,128 @@
         tools:context=".views.AdventureCreatorActivity">
 
     <!-- Name EditText -->
+    <!-- Description EditText -->
     <Spinner
-            android:layout_marginTop="10dp"
             android:layout_width="287dp"
-            android:layout_height="46dp"
+            android:layout_height="50dp"
             android:id="@+id/activityName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"/>
-    <!-- Description EditText -->
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.604"
+            app:layout_constraintVertical_bias="0.023"/>
+    <!-- Button to Show Calendar -->
+
+
+    <!-- Street EditText -->
+
+    <!-- Button to Create Activity -->
+
     <EditText
-            android:layout_marginTop="10dp"
-            android:id="@+id/descriptionEditText"
+            android:id="@+id/timeEditText"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="Description"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="200dp"
+            android:layout_height="50dp"
+            android:hint="@string/create_activity_time"
             android:layout_gravity="start|top"
             android:gravity="start|top"
             android:minLines="4"
             android:maxLines="6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityName"
-            app:layout_constraintBottom_toTopOf="@+id/showCalendarButton"/>
-    <!-- Button to Show Calendar -->
-
-
-    <!-- Street EditText -->
-
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.242"/>
+    <EditText
+            android:id="@+id/dateEditText"
+            android:layout_width="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="200dp"
+            android:layout_height="50dp"
+            android:hint="@string/create_activity_date"
+            android:layout_gravity="start|top"
+            android:gravity="start|top"
+            android:minLines="4"
+            android:maxLines="6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.362"/>
+    <EditText
+            android:id="@+id/descriptionEditText2"
+            android:layout_width="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_height="50dp"
+            android:hint="@string/create_activity_description"
+            android:layout_gravity="start|top"
+            android:gravity="start|top"
+            android:minLines="4"
+            android:maxLines="6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.124"/>
     <Button
             android:id="@+id/showTimeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Time"
-            app:layout_constraintEnd_toStartOf="@+id/showCalendarButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
-            android:layout_marginTop="48dp"
-            app:layout_constraintHorizontal_bias="0.536"
-            app:layout_constraintEnd_toEndOf="parent"
-    />
+            android:text="@string/create_activity_time"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.755" app:layout_constraintVertical_bias="0.244"/>
     <Button
             android:id="@+id/showCalendarButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Date"
-            app:layout_constraintStart_toEndOf="@+id/showTimeButton"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
-            android:layout_marginTop="48dp"
-            app:layout_constraintHorizontal_bias="0.845"
+            android:text="@string/create_activity_date"
             app:layout_constraintEnd_toEndOf="parent"
-    />
-
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.755"
+            app:layout_constraintVertical_bias="0.361"/>
     <Button
             android:id="@+id/openMapButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Abrir Mapa"
+            android:text="@string/create_activity_location"
             android:layout_below="@id/mapView"
-            android:layout_centerHorizontal="true" tools:layout_editor_absoluteY="650dp"
-            tools:layout_editor_absoluteX="135dp"/>
-    <EditText
-            android:id="@+id/locationTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:hint="Street"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.499" app:layout_constraintHorizontal_bias="0.726"/>
     <EditText
             android:id="@+id/locationcordsTextView"
             android:layout_width="0dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="200dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionEditText"
             app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="invisible"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toTopOf="parent"
     />
-
-    <!-- Button to Create Activity -->
+    <EditText
+            android:id="@+id/locationTextView"
+            android:layout_width="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="200dp"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:hint="@string/create_activity_location_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/openMapButton" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.497"/>
     <Button
             android:id="@+id/createActivityButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Activity"
+            android:text="@string/create_activity_create"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationTextView"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.407"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
