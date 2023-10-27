@@ -19,6 +19,8 @@
     <!-- Main Activity-->
     <string name="autologin_success">Bienvenido</string>
     <string name="autologin_error">Ha ocurrido un error al intentar iniciar session</string>
+    <string name="search_noresult">No se han encontrado actividades con esos filtros</string>
+
 
     <!--Login_Activity-->
     <string name="login_mail_text">E-mail</string>

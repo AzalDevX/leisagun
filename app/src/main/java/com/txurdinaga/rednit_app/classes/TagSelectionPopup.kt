@@ -15,10 +15,17 @@ import com.txurdinaga.rednit_app.classes.Globals
 class TagSelectionPopup : DialogFragment() {
     private val selectedTags = mutableSetOf<String>()
     private lateinit var globals: Globals // Declare a lateinit property for Globals
+    private var tagsSelectedHandler: ((Set<String>) -> Unit)? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         globals = requireContext().applicationContext as Globals // Initialize globals
     }
+
+    fun onTagsSelected(handler: (Set<String>) -> Unit) {
+        tagsSelectedHandler = handler
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -51,6 +58,8 @@ class TagSelectionPopup : DialogFragment() {
 
         rootView.findViewById<Button>(R.id.applyButton).setOnClickListener {
             // Handle the selected tags here
+            tagsSelectedHandler?.invoke(selectedTags)
+
             dismiss()
         }
 
