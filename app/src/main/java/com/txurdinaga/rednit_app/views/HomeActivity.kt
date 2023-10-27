@@ -125,5 +125,8 @@ class HomeActivity : AppCompatActivity() {
         findViewById<ImageButton>(R.id.calendar_button).setOnClickListener {
             startActivity(Intent(this, CalendarActivity::class.java))
         }
+        findViewById<ImageButton>(R.id.chat_button).setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
+        }
     }
 }
