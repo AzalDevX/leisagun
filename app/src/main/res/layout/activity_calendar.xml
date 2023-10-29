@@ -5,6 +5,17 @@
         android:orientation="vertical">
 
     <!-- Encabezado del calendario con NumberPicker para cambiar de mes -->
+    <ImageButton
+            android:id="@+id/backButton2"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_gravity="top|start"
+            android:contentDescription="@string/back_button_description"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:elevation="4dp"
+            android:background="@android:color/transparent"/>
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

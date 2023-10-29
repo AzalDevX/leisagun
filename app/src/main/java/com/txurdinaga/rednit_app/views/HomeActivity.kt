@@ -258,6 +258,7 @@ class HomeActivity : AppCompatActivity() {
             customCardView.layoutParams = layoutParams
 
             mainLayout.addView(customCardView)
+        }
 
         findViewById<ImageButton>(R.id.chat_button).setOnClickListener {
             startActivity(Intent(this, ChatActivity::class.java))

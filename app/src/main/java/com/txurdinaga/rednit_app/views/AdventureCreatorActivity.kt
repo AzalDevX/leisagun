@@ -181,7 +181,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
         createActivity.setOnClickListener {
             if (selectedDate == null || selectedTime == null) {
                 // Check if the user has selected a date
-                Toast.makeText(this, "Please select a date", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.select_date), Toast.LENGTH_SHORT).show()
                 Log.d("project|main", "The user has not selected any date.")
                 return@setOnClickListener
             }
@@ -194,7 +194,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
 
             if (name.isEmpty() || description.isEmpty() || street.isEmpty() || coords.isEmpty()) {
                 // Check if name, description, and street are provided
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.all_fields), Toast.LENGTH_SHORT).show()
                 Log.d("project|main", "The user has not filled all the fields.")
                 return@setOnClickListener
             }
@@ -203,16 +203,16 @@ class AdventureCreatorActivity : AppCompatActivity() {
             val longitude : Double = coords.split(',')[1].toDouble() ?: 0.0
 
             if (latitude == 0.0 || longitude == 0.0) {
-                Toast.makeText(this, "The location provided doesn't exist", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.location_error), Toast.LENGTH_SHORT).show()
                 Log.d("project|main", "The user provided location doesn't exist. Cords ($latitude, $longitude)")
                 return@setOnClickListener
             }
 
-            if (latitude < minLatitude || latitude > maxLatitude || longitude < minLongitude || longitude > maxLongitude) {
+            /*if (latitude < minLatitude || latitude > maxLatitude || longitude < minLongitude || longitude > maxLongitude) {
                 Toast.makeText(this, "The location is not within the Basque Country", Toast.LENGTH_SHORT).show()
                 Log.d("project|main", "The user provided location is not within the Basque Country. Cords ($latitude, $longitude)")
                 return@setOnClickListener
-            }
+            }*/
 
             val selectedDateTime = Date(
                 selectedDate!!.year, selectedDate!!.month, selectedDate!!.day,
@@ -235,7 +235,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
                 .addOnSuccessListener { documentReference ->
                     val activityId = documentReference.id
                     Log.d("project|main", "Activity created with ID: $activityId. Cords ($latitude, $longitude)")
-                    Toast.makeText(this, "Activity created successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.created_succ), Toast.LENGTH_SHORT).show()
 
                     /**
                      * Restart all the inputs
@@ -247,6 +247,8 @@ class AdventureCreatorActivity : AppCompatActivity() {
                     selectedTime = null
 
                     recreate() // Restart activity to reload the app
+                    startActivity(Intent(this, HomeActivity::class.java))
+
                 }
                 .addOnFailureListener { e ->
                     Log.e("project|main", "Error adding activity: ${e.message}")

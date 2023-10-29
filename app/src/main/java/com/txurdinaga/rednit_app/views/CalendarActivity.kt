@@ -10,14 +10,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.LinearLayout
-import android.widget.NumberPicker
-import android.widget.TextView
-import android.widget.ListView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.txurdinaga.rednit_app.MainActivity
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
 import java.io.IOException
@@ -33,6 +30,12 @@ class CalendarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
+
+        findViewById<ImageButton>(R.id.backButton2).setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val globals = application as Globals
 
@@ -63,6 +66,8 @@ class CalendarActivity : AppCompatActivity() {
             filterAndDisplayActivities(selectedMonth, actividadesListView)
         }
     }
+
+
 
     private fun filterAndDisplayActivities(selectedMonth: String, actividadesListView: ListView) {
         val geocoder = Geocoder(this)

@@ -1,6 +1,6 @@
 <resources>
     <!--GENERAL -->
-    <string name="app_name">rednit-app</string>
+    <string name="app_name">Leisagun</string>
     <string name="login_title">Login</string>
     <string name="register_title">Register</string>
     <string name="title_activity_calendar">CalendarActivity</string>
@@ -54,16 +54,24 @@
     <string name="register_unknown_error">Error registering:</string>
 
     <!-- Home_Activity -->
-    <string name="home_filter_gym_text">GYM</string>
+    <string name="search">Search...</string>
+    <string name="tags">Tags</string>
+
+    <!-- <string name="home_filter_gym_text">GYM</string>
     <string name="home_filter_walk_text">Hiking</string>
     <string name="home_filter_beach_text">Beach</string>
 
     <string name="home_ereaga_text">EREAGA</string>
     <string name="home_getxo_text">Getxo</string>
-    <string name="home_username_text">TestUser</string>
+    <string name="home_username_text">TestUser</string> -->
+
+    <!-- Maps Activity -->
+    <string name="find_nearby_activities">Find Nearby Activities</string>
 
     <!-- Profile Activity -->
     <string name="profile_title">Your Profile</string>
+    <string name="select_fav">Select Favourites</string>
+    <string name="logout">Log Out</string>
 
     <!--  Menu -->
     <string name="calendar">Calendar</string>
@@ -78,5 +86,10 @@
     <string name="create_activity_location">Open Map</string>
     <string name="create_activity_create">Create Activity</string>
     <string name="create_activity_location_text">Address</string>
+
+    <string name="created_succ">Activity created successfully</string>
+    <string name="select_date">Please select a date</string>
+    <string name="all_fields">Please fill in all fields</string>
+    <string name="location_error">The location provided doesn't exist</string>
 
 </resources>

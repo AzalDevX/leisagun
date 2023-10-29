@@ -1,6 +1,6 @@
 <resources>
     <!--GENERAL -->
-    <string name="app_name">rednit-app</string>
+    <string name="app_name">Leisagun</string>
     <string name="login_title">Login</string>
     <string name="register_title">Register</string>
     <string name="title_activity_calendar">CalendarActivity</string>
@@ -54,16 +54,25 @@
     <string name="register_unknown_error">Error al registrar:</string>
 
     <!--  Home_Activity-->
-    <string name="home_filter_gym_text">GYM</string>
+    <string name="search">Buscar...</string>
+    <string name="tags">Etiquetas</string>
+
+
+    <!--<string name="home_filter_gym_text">GYM</string>
     <string name="home_filter_walk_text">Senderismo</string>
     <string name="home_filter_beach_text">Playa</string>
 
     <string name="home_ereaga_text">EREAGA</string>
     <string name="home_getxo_text">Getxo</string>
-    <string name="home_username_text">TestUser</string>
+    <string name="home_username_text">TestUser</string>-->
+
+    <!-- Maps Activity -->
+    <string name="find_nearby_activities">Encontrar Actividades Cercanas</string>
 
     <!-- Profile Activity -->
     <string name="profile_title">Tu Perfil</string>
+    <string name="select_fav">Seleccionar Favoritos</string>
+    <string name="logout">Cerrar sesión</string>
 
     <!--  Menu -->
     <string name="calendar">Calendario</string>
@@ -79,6 +88,10 @@
     <string name="create_activity_create">Crear actividad</string>
     <string name="create_activity_location_text">Dirección</string>
 
+    <string name="created_succ">Actividad creada exitosamente</string>
+    <string name="select_date">Por favor, selecciona una fecha</string>
+    <string name="all_fields">Por favor, completa todos los campos</string>
+    <string name="location_error">La ubicación proporcionada no existe</string>
 
 
     <string name="back_button_description" translatable="false">Descripcion</string>

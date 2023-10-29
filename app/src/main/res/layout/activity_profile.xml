@@ -79,7 +79,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
     <Button
-            android:text="Select Favourites"
+            android:text="@string/select_fav"
             android:layout_width="213dp"
             android:layout_height="41dp"
             android:id="@+id/select_favourites"
@@ -91,7 +91,7 @@
             android:textColor="#FFFFFF"/>
 
     <Button
-            android:text="Log Out"
+            android:text="@string/logout"
             android:layout_width="213dp"
             android:layout_height="41dp"
             android:id="@+id/logout_user_button"

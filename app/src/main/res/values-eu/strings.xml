@@ -1,6 +1,6 @@
 <resources id="eu">
     <!--GENERAL -->
-    <string name="app_name">rednit-app</string>
+    <string name="app_name">Leisagun</string>
     <string name="login_title">Login</string>
     <string name="register_title">Register</string>
     <string name="title_activity_calendar">CalendarActivity</string>
@@ -54,23 +54,32 @@
     <string name="register_unknown_error">Errorea erregistratzean:</string>
 
     <!-- Home_Activity -->
-    <string name="home_filter_gym_text">GYM</string>
+    <string name="search">Bilatu...</string>
+    <string name="tags">Etiketak</string>
+
+    <!-- <string name="home_filter_gym_text">GYM</string>
     <string name="home_filter_walk_text">Ibilaldiak</string>
     <string name="home_filter_beach_text">Hondartza</string>
 
     <string name="home_ereaga_text">EREAGA</string>
     <string name="home_getxo_text">Getxo</string>
-    <string name="home_username_text">TestErabiltzailea</string>
+    <string name="home_username_text">TestErabiltzailea</string> -->
+
+    <!-- Maps Activity -->
+    <string name="find_nearby_activities">Hurbilen ekintzak aurkitu</string>
 
     <!-- Profile Activity -->
     <string name="profile_title">Zure Profila</string>
+    <string name="select_fav">Gogokoenak Hautatu</string>
+    <string name="logout">Saioa itxi</string>
+
 
     <!--  Menu -->
     <string name="calendar">Egutegia</string>
     <string name="create_activity">Sortu</string>
     <string name="map">Mapa</string>
 
-    <!-- Sortu jardueraren -->
+    <!-- Create Activity -->
     <string name="create_activity_title">Sortu Jarduera</string>
     <string name="create_activity_description">Deskribapena</string>
     <string name="create_activity_date">Data</string>
@@ -78,5 +87,11 @@
     <string name="create_activity_location">Mapa Ireki</string>
     <string name="create_activity_create">Jarduera Sortu</string>
     <string name="create_activity_location_text">Helbidea</string>
+
+    <string name="created_succ">Ekintza ongi sortu da</string>
+    <string name="select_date">Mesedez, hautatu data bat</string>
+    <string name="all_fields">Mesedez, bete eremu guztiak</string>
+    <string name="location_error">Emandako kokapena ez da existitzen</string>
+
 
 </resources>
