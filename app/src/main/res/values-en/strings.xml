@@ -19,6 +19,8 @@
     <!-- Main Activity -->
     <string name="autologin_success">Welcome</string>
     <string name="autologin_error">An error occurred while trying to log in</string>
+    <string name="search_noresult">No filters match</string>
+
 
     <!-- Login_Activity -->
     <string name="login_mail_text">E-mail</string>

@@ -89,4 +89,9 @@ class Utilities : Application(){
             else it.toString()
         }
     }
+
+    fun isDarkTheme(context: Context): Boolean {
+        val nightMode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return nightMode == Configuration.UI_MODE_NIGHT_YES
+    }
 }
