@@ -28,6 +28,7 @@ import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.MapEventsOverlay
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -125,7 +126,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
         val createActivity: Button = findViewById(R.id.createActivityButton)
 
         val nameEditText: Spinner = findViewById(R.id.activityName)
-        val descriptionEditText: EditText = findViewById(R.id.descriptionEditText)
+        val descriptionEditText: EditText = findViewById(R.id.descriptionEditText2)
         val streetEditText: EditText = findViewById(R.id.locationTextView)
 
         val languagePicker = findViewById<Spinner>(R.id.activityName)
@@ -140,6 +141,12 @@ class AdventureCreatorActivity : AppCompatActivity() {
 
                 // Store the selected date
                 selectedDate = calendar.time
+
+                // Formatea el objeto Calendar en una cadena de fecha legible
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val formattedDate = sdf.format(selectedDate)
+
+                findViewById<EditText>(R.id.dateEditText).setText(formattedDate)
                 Log.d("project|main", "showDatePickerDialog selectedYear: $selectedYear, selectedMonth: $selectedMonth, selectedDay: $selectedDay")
             }
         }
@@ -162,6 +169,11 @@ class AdventureCreatorActivity : AppCompatActivity() {
                 // Store the selected time
                 selectedTime = calendar.time
 
+                // Formatea la fecha y hora en el formato deseado (por ejemplo, "HH:mm")
+                val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+                val formattedTime = sdf.format(selectedTime)
+
+                findViewById<EditText>(R.id.timeEditText).setText(formattedTime)
                 Log.d("project|main", "showTimePickerDialog selectedHour: $selectedHour, selectedMinute: $selectedMinute")
             }
         }
