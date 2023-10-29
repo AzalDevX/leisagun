@@ -3,6 +3,7 @@ package com.txurdinaga.rednit_app.views
 
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -43,6 +44,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
 
         Log.d("project|home", "Home activity has started!")
 
@@ -155,6 +158,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, CalendarActivity::class.java))
         }
 
+
         job = CoroutineScope(Dispatchers.IO).launch {
             while (true) {
                 val cardCount = mainLayout.childCount
@@ -254,6 +258,9 @@ class HomeActivity : AppCompatActivity() {
             customCardView.layoutParams = layoutParams
 
             mainLayout.addView(customCardView)
+
+        findViewById<ImageButton>(R.id.chat_button).setOnClickListener {
+            startActivity(Intent(this, ChatActivity::class.java))
         }
     }
 }

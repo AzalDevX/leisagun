@@ -70,6 +70,16 @@
     <string name="create_activity">Crear</string>
     <string name="map">Mapa</string>
 
+    <!--  Create activity-->
+    <string name="create_activity_title">Crear Actividad</string>
+    <string name="create_activity_description">Descripción</string>
+    <string name="create_activity_date">Fecha</string>
+    <string name="create_activity_time">Hora</string>
+    <string name="create_activity_location">Abrir mapa</string>
+    <string name="create_activity_create">Crear actividad</string>
+    <string name="create_activity_location_text">Dirección</string>
+
+
 
     <string name="back_button_description" translatable="false">Descripcion</string>
         <string-array name="months">

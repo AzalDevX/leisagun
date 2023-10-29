@@ -2,15 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Rednitapp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Rednitapp" parent="Base.Theme.Rednitapp"/>
+    <style name="Theme.Rednitapp" parent="Base.Theme.Rednitapp">
+
+        <item name="colorPrimary">#FF914D</item>
+        <item name="backgroundColor">#222</item>
+    </style>
     <!-- Base application theme. -->
     <style name="Base.Theme.AppCompat.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+
     </style>
 
-    <style name="Theme.AppCompat.NoActionBar" parent="Base.Theme.AppCompat.NoActionBar"/>
+    <style name="Theme.AppCompat.NoActionBar" parent="Base.Theme.AppCompat.NoActionBar">
+
+    </style>
 </resources>

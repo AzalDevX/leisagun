@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Colores específicos para el tema oscuro -->
+    <color name="background_color">#222</color>
+    <color name="chat_background_color">#26282E</color>
+    <color name="message_input_background">#3C3F46</color>
+    <color name="chat_text_color">#DDDDDD</color>
+    <color name="message_input_text_color">#DDDDDD</color>
+    <color name="send_button_color">#4B5BD3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF5733</color>
-
     <color name="dark_background">#000000F0</color>
-
-    <!-- Background Color for the main layout -->
-    <color name="background_color">#36393F</color>
-
-    <!-- Background Color for the chat messages -->
-    <color name="chat_background_color">#2F3136</color>
-
-    <!-- Background Color for the message input area -->
-    <color name="message_input_background">#40444B</color>
-
-    <!-- Text Color for the chat messages -->
-    <color name="chat_text_color">#FFFFFF</color>
-
-    <!-- Text Color for the message input field -->
-    <color name="message_input_text_color">#FFFFFF</color>
-
-    <!-- Color for the send button -->
-    <color name="send_button_color">#7289DA</color>
     <color name="input_hint_color">#808080</color>
+    <color name="logo_color">#FF914D</color>
 </resources>
