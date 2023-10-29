@@ -1,6 +1,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#80000000"/> <!-- Usar #80 para un 50% de opacidad -->
-    <stroke android:width="3dp" android:color="#B1BCBE" />
+    <solid android:color="@color/logo_color"/> <!-- Usar #80 para un 50% de opacidad -->
+    <stroke android:width="3dp" android:color="#ffffff" />
     <corners android:radius="10dp"/>
     <padding android:left="0dp" android:top="0dp" android:right="0dp" android:bottom="0dp" />
 </shape>
