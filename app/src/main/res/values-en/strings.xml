@@ -87,9 +87,27 @@
     <string name="create_activity_create">Create Activity</string>
     <string name="create_activity_location_text">Address</string>
 
+    <!--  Chat activity -->
+    <string name="chat_send">Send</string>
+
     <string name="created_succ">Activity created successfully</string>
     <string name="select_date">Please select a date</string>
     <string name="all_fields">Please fill in all fields</string>
-    <string name="location_error">The location provided doesn't exist</string>
+    <string name="location_error">The location provided doesn\'t exist</string>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
 
 </resources>

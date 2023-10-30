@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.Timestamp
@@ -254,6 +255,13 @@ class AdventureCreatorActivity : AppCompatActivity() {
                     Log.e("project|main", "Error adding activity: ${e.message}")
                     Toast.makeText(this, "Error creating activity: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
+        }
+
+        /**
+         * Go back to home page button
+         */
+        findViewById<ImageButton>(R.id.go_back_btn).setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 }

@@ -130,6 +130,7 @@ class ChatActivity : AppCompatActivity() {
 
                 Log.d("project|main", "onChildAdded has been called message: ${message?.messageText.toString()} and now there are ${messageList.size} has been added ${message != null}")
                 messageAdapter.notifyDataSetChanged()
+                recyclerView.smoothScrollToPosition(messageList.size - 1)
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
@@ -141,6 +142,7 @@ class ChatActivity : AppCompatActivity() {
                     if (index != -1) {
                         messageList[index] = message
                         messageAdapter.notifyDataSetChanged() // Notify the adapter that data has changed
+                        recyclerView.smoothScrollToPosition(messageList.size - 1)
                     }
                 }
 

@@ -15,6 +15,7 @@
             android:roundIcon="@drawable/leisagun"
             android:supportsRtl="true"
             android:theme="@style/Theme.Rednitapp"
+            android:screenOrientation="portrait"
             tools:targetApi="31">
         <activity
                 android:name=".views.CalendarActivity"

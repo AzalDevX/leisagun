@@ -93,6 +93,8 @@
     <string name="all_fields">Por favor, completa todos los campos</string>
     <string name="location_error">La ubicación proporcionada no existe</string>
 
+    <!--  Chat activity -->
+    <string name="chat_send">Enviar</string>
 
     <string name="back_button_description" translatable="false">Descripcion</string>
         <string-array name="months">

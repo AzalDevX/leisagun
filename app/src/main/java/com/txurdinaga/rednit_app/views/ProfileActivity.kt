@@ -95,7 +95,7 @@ class ProfileActivity : AppCompatActivity() {
         /**
          * Go back to home page button
          */
-        findViewById<AppCompatImageView>(R.id.go_back_btn).setOnClickListener {
+        findViewById<ImageButton>(R.id.go_back_btn).setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
     }

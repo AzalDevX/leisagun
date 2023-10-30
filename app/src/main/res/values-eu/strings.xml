@@ -93,5 +93,22 @@
     <string name="all_fields">Mesedez, bete eremu guztiak</string>
     <string name="location_error">Emandako kokapena ez da existitzen</string>
 
+    <!--  Chat activity -->
+    <string name="chat_send">Bidali</string>
+
+    <string-array name="months">
+        <item>Urtarrila</item>
+        <item>Otsaila</item>
+        <item>Martxoa</item>
+        <item>Apirila</item>
+        <item>Maiatza</item>
+        <item>Ekaina</item>
+        <item>Uztaila</item>
+        <item>Abuztua</item>
+        <item>Iraila</item>
+        <item>Urria</item>
+        <item>Azaroa</item>
+        <item>Abendua</item>
+    </string-array>
 
 </resources>
