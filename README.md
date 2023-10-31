@@ -13,7 +13,7 @@ Leisagun is the perfect solution for those seeking workout companions or simply 
 
 ## Screenshots
 
-![Screenshot 1](https://discord.com/channels/1153587296415793203/1168626585562259577/1168817159900778528)
+![Screenshot 1](https://cdn.discordapp.com/attachments/1168626585562259577/1168817159636529232/image.png?ex=655324ce&is=6540afce&hm=2cf7cab7406fda623cc417ec15927f0c3aa2ca4cd63a23866ca4a59204da5e24&)
 
 ## Getting Started
 
