@@ -44,6 +44,6 @@ This project is under the Apache License. See the [LICENSE](LICENSE) file for mo
 
 ---
 
-Thank you for visiting the Leisagun repository! We hope you enjoy using the app as much as we enjoyed developing it. If you have any questions or need assistance, please don't hesitate to contact us. Have fun with your new activities and workout buddies!
+Thank you for visiting the Leisa-gun repository! We hope you enjoy using the app as much as we enjoyed developing it. If you have any questions or need assistance, please don't hesitate to contact us. Have fun with your new activities and workout buddies!
 
 
