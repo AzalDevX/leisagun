@@ -19,7 +19,7 @@ Leisagun is the perfect solution for those seeking workout companions or simply 
 
 If you want to try Leisagun on your Android device, follow these steps:
 
-1. Clone the repository to your local machine. git clone https://github.com/yourusername/leisagun.git
+1. Clone the repository to your local machine. git clone https://github.com/AzalDevX/leisagun-app.git
 2. Open the project in Android Studio.
 3. Set up your Android development environment as needed.
 4. Build and run the app on your device or emulator.
