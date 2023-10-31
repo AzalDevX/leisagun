@@ -36,7 +36,7 @@ We welcome community contributions! If you wish to contribute to the development
 
 ## Issues and Suggestions
 
-If you encounter issues or have suggestions to improve Leisagun, please open an issue in this repository. We are eager to receive your feedback and make Leisagun an even better app.
+If you encounter issues or have suggestions to improve Leisa-gun, please open an issue in this repository. We are eager to receive your feedback and make Leisagun an even better app.
 
 ## License
 
