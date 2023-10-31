@@ -1,6 +1,6 @@
 # Leisagun - Your Companion for Everyday Activities
 
-Welcome to the Leisagun repository, a Kotlin-based Android mobile application that helps you meet new people interested in everyday activities like walking, running, or going to the gym. With Leisagun, you'll never have to exercise alone again!
+Welcome to the Leisa-gun repository, a Kotlin-based Android mobile application that helps you meet new people interested in everyday activities like walking, running, or going to the gym. With Leisagun, you'll never have to exercise alone again!
 
 ## Description
 
@@ -17,13 +17,13 @@ Leisagun is the perfect solution for those seeking workout companions or simply 
 
 ## Getting Started
 
-If you want to try Leisagun on your Android device, follow these steps:
+If you want to try Leisa-gun on your Android device, follow these steps:
 
 1. Clone the repository to your local machine. git clone https://github.com/AzalDevX/leisagun-app.git
 2. Open the project in Android Studio.
 3. Set up your Android development environment as needed.
 4. Build and run the app on your device or emulator.
-5. Explore Leisagun and start meeting new people to work out together!
+5. Explore Leisa-gun and start meeting new people to work out together!
 
 ## Contributions
 
