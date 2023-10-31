@@ -88,15 +88,38 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
-        findViewById<Button>(R.id.select_favourites).setOnClickListener {
-            startActivity(Intent(this, FavouriteActivity::class.java))
-        }
+        findViewById<Button>(R.id.delete_account_button).setOnClickListener {
+            /**
+             * @description: Delete user account
+             */
+            globals.current_user?.delete()?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("project|main", "User account deleted.")
+                    Toast.makeText(this, "User account deleted.", Toast.LENGTH_SHORT).show()
 
-        /**
-         * Go back to home page button
-         */
-        findViewById<ImageButton>(R.id.go_back_btn).setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
+                    startActivity(Intent(this, LoginActivity::class.java))
+                } else {
+                    if (globals.enviroment == "development")
+                        Log.d("project|main", "User account deletion failed.")
+                    Toast.makeText(this, "User account deletion failed.", Toast.LENGTH_SHORT).show()
+                }
+            }?.addOnSuccessListener {
+                // La cuenta se eliminó con éxito
+                Log.d("project|main", "User account deleted successfully.")
+                Toast.makeText(this, "User account deleted successfully.", Toast.LENGTH_SHORT).show()
+
+            }
+
+            findViewById<Button>(R.id.select_favourites).setOnClickListener {
+                startActivity(Intent(this, FavouriteActivity::class.java))
+            }
+
+            /**
+             * Go back to home page button
+             */
+            findViewById<ImageButton>(R.id.go_back_btn).setOnClickListener {
+                startActivity(Intent(this, HomeActivity::class.java))
+            }
         }
     }
 }

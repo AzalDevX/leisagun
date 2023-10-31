@@ -129,6 +129,7 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
+
 /**
  * @title: String literals
  * When you use the string from strings.xml inside another string concatenated by user thi example

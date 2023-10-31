@@ -116,4 +116,16 @@
             android:background="@drawable/rounded_button_bg"
             android:textColor="#FFFFFF" />
 
+    <Button
+            android:text="@string/delete_account"
+            android:layout_width="213dp"
+            android:layout_height="41dp"
+            android:id="@+id/delete_account_button"
+            app:layout_constraintTop_toBottomOf="@id/select_favourites"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/rounded_button_bg"
+            android:textColor="#FFFFFF"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

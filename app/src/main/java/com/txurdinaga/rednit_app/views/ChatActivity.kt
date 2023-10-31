@@ -150,15 +150,15 @@ class ChatActivity : AppCompatActivity() {
             }
 
             override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-                // Message has been removed
+
             }
 
             override fun onChildMoved(dataSnapshot: DataSnapshot, previousChildName: String?) {
-                // Message has been moved
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
-                // Error handling
+
             }
         })
     }

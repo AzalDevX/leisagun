@@ -70,7 +70,8 @@ class TagSelectionPopup : DialogFragment() {
         layoutParams.width = (0.8 * screenWidth).toInt()
         textView.layoutParams = layoutParams
 
-
+        // returns rootView
         return rootView
     }
 }
+

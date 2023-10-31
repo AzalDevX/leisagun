@@ -6,6 +6,7 @@
             <solid android:color="@drawable/rounded_button_bg" /> <!-- Fondo predeterminado -->
         </shape>
     </item>
+
     <!-- Estado presionado -->
     <item android:state_pressed="true">
         <shape android:shape="rectangle">

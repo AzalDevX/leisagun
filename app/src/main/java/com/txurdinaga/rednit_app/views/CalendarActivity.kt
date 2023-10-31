@@ -58,7 +58,7 @@ class CalendarActivity : AppCompatActivity() {
         filterAndDisplayActivities(meses[currentMonth], actividadesListView)
 
 
-        // Escucha los cambios en el NumberPicker
+
         monthNumberPicker.setOnValueChangedListener { _, _, newVal ->
             // Actualiza el TextView con el mes seleccionado
             // Filtra y muestra las actividades para el mes seleccionado

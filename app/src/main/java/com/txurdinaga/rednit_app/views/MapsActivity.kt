@@ -66,7 +66,7 @@ class MapsActivity : FragmentActivity() {
 
         // Establece una ubicación inicial (por ejemplo, el centro de la ciudad)
         val geocoder = Geocoder(this)
-        val marker = Marker(mapView)
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)

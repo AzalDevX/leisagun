@@ -109,6 +109,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adventure_creator)
 
+
         Log.d("project|main", "AdventureCreatorActivity has started!")
 
         val globals = application as Globals
@@ -136,7 +137,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
 
         showCalendarButton.setOnClickListener {
             utils.showDatePickerDialog(this) { selectedYear, selectedMonth, selectedDay ->
-                // Handle the selected date here
+
                 val calendar = Calendar.getInstance()
                 calendar.set(selectedYear, selectedMonth, selectedDay)
 

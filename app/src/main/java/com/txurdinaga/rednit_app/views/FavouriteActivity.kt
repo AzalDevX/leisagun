@@ -48,30 +48,6 @@ class FavouriteActivity : AppCompatActivity() {
             linearLayout.addView(switch)
         }
 
-//        userDocumentRef.get()
-//            .addOnSuccessListener { documentSnapshot ->
-//                if (documentSnapshot.exists()) {
-//                    val userData = documentSnapshot.data
-//
-//                    // Check if the 'favourite_activities' field exists in the document
-//                    if (userData != null && userData.containsKey("favourite_activities")) {
-//                        val favouriteActivitiesFromFirestore = userData["favourite_activities"] as List<String>
-//
-//                        // Iterate through the activity types and update the switches
-//                        for ((index, activity) in globals.activity_types.withIndex()) {
-//                            val isLiked = favouriteActivitiesFromFirestore.contains(activity)
-//                            Log.d("project|main", "($index) local $activity is in firestore? $isLiked")
-//                            favourite_activities[index] = isLiked
-//                            favourite_activities_checkbox[index].isChecked = isLiked
-//                        }
-//                    }
-//                }
-//            }
-//            .addOnFailureListener { e ->
-//                // Handle the case when there's an error fetching the document
-//                Toast.makeText(this, "Error fetching data: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
-//                Log.e("project|main", "Error fetching user data: ${e.localizedMessage}")
-//            }
 
         for ((index, activity) in globals.activity_types.withIndex()) {
             val isLiked = globals.user_favourite_activities.contains(activity)
