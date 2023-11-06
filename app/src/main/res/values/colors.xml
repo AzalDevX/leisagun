@@ -13,4 +13,6 @@
     <color name="dark_background">#000000F0</color>
     <color name="input_hint_color">#808080</color>
     <color name="logo_color">#FF914D</color>
+    <color name="ON">#00FF00</color>
+    <color name="OFF">#FF0000</color>
 </resources>
