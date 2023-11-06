@@ -64,7 +64,7 @@ class HomeActivity : AppCompatActivity() {
         val activityList: MutableList<Map<String, Any>> = mutableListOf()
 
         collectionRef
-//            .whereGreaterThan("hora", Timestamp.now())
+            .whereGreaterThan("hora", Timestamp.now())
             .get()
             .addOnSuccessListener { querySnapshot ->
                 try {

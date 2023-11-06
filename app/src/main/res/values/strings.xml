@@ -93,6 +93,7 @@
     <string name="select_date">Por favor, selecciona una fecha</string>
     <string name="all_fields">Por favor, completa todos los campos</string>
     <string name="location_error">La ubicación proporcionada no existe</string>
+    <string name="select_activity">Seleciona Una Actividad</string>
 
     <!--  Chat activity -->
     <string name="chat_send">Enviar</string>

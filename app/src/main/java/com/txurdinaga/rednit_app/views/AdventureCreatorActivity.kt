@@ -1,6 +1,7 @@
 package com.txurdinaga.rednit_app.views
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -38,9 +39,10 @@ val minLatitude = 42.83
 val maxLatitude = 43.37
 val minLongitude = -2.99
 val maxLongitude = -1.97
+@SuppressLint("ResourceType")
 private fun showMiniMapDialog(context: Context, utils: Utilities, locationTextView: TextView, locationcordsTextView: TextView) {
     val dialog = Dialog(context)
-    dialog.setContentView(R.drawable.mini_map_dialog) // Utiliza el diseño personalizado del diálogo con el mapa
+    dialog.setContentView(R.layout.mini_map_dialog) // Utiliza el diseño personalizado del diálogo con el mapa
 
     val mapView = dialog.findViewById<MapView>(R.id.dialogMapView)
     mapView.setBuiltInZoomControls(true)
@@ -132,8 +134,13 @@ class AdventureCreatorActivity : AppCompatActivity() {
         val streetEditText: EditText = findViewById(R.id.locationTextView)
 
         val languagePicker = findViewById<Spinner>(R.id.activityName)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, globals.activity_types)
+
+        // Modify the list to include "Select Activity" as the first item
+        val activityTypes = mutableListOf(getString(R.string.select_activity))
+        activityTypes.addAll(globals.activity_types)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, activityTypes)
         languagePicker.adapter = adapter
+
 
         showCalendarButton.setOnClickListener {
             utils.showDatePickerDialog(this) { selectedYear, selectedMonth, selectedDay ->
@@ -189,6 +196,7 @@ class AdventureCreatorActivity : AppCompatActivity() {
             }
 
             val name = nameEditText.selectedItem.toString()
+            if (name == getString(R.string.select_activity)) return@setOnClickListener;
             val description = descriptionEditText.text.toString()
             val street = streetEditText.text.toString()
             val coords = locationcordsTextView.text.toString()
@@ -250,7 +258,6 @@ class AdventureCreatorActivity : AppCompatActivity() {
 
                     recreate() // Restart activity to reload the app
                     startActivity(Intent(this, HomeActivity::class.java))
-
                 }
                 .addOnFailureListener { e ->
                     Log.e("project|main", "Error adding activity: ${e.message}")

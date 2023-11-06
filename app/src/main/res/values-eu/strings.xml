@@ -93,6 +93,7 @@
     <string name="select_date">Mesedez, hautatu data bat</string>
     <string name="all_fields">Mesedez, bete eremu guztiak</string>
     <string name="location_error">Emandako kokapena ez da existitzen</string>
+    <string name="select_activity">Aukeratu Aktibitate Bat</string>
 
     <!--  Favourite activity-->
     <string name="favourite_activity_title">Ekintzak</string>
