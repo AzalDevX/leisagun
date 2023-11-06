@@ -106,9 +106,11 @@ class ProfileActivity : AppCompatActivity() {
             }?.addOnSuccessListener {
                 // La cuenta se eliminó con éxito
                 Log.d("project|main", "User account deleted successfully.")
-                Toast.makeText(this, "User account deleted successfully.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "User account deleted successfully.", Toast.LENGTH_SHORT)
+                    .show()
 
             }
+        }
 
             findViewById<Button>(R.id.select_favourites).setOnClickListener {
                 startActivity(Intent(this, FavouriteActivity::class.java))
@@ -120,6 +122,6 @@ class ProfileActivity : AppCompatActivity() {
             findViewById<ImageButton>(R.id.go_back_btn).setOnClickListener {
                 startActivity(Intent(this, HomeActivity::class.java))
             }
-        }
+
     }
 }

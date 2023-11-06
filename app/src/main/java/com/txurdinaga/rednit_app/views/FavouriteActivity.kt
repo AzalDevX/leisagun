@@ -42,12 +42,12 @@ class FavouriteActivity : AppCompatActivity() {
 
             val switch = Switch(this)
             switch.text = activity.replaceFirstChar { it.uppercase() }
+            switch.thumbTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.OFF))
             switch.setOnCheckedChangeListener { _, isChecked ->
                 favourite_activities[index] = isChecked
                 val colorResId = if (isChecked) R.color.ON else R.color.OFF
                 val color = ContextCompat.getColor(this, colorResId)
                 switch.thumbTintList = ColorStateList.valueOf(color)
-
             }
             favourite_activities_checkbox.add(index, switch);
 
