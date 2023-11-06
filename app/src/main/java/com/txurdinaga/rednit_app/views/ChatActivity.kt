@@ -103,6 +103,11 @@ class ChatActivity : AppCompatActivity() {
 
             // Create a message object
             val message = Message()
+            if (!message_input.text.isEmpty()) {
+                Toast.makeText(this, "X", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             message.messageText = message_input.text.toString() // messageText;
             message.senderId = globals.current_user?.email.toString();
             message.timestamp = System.currentTimeMillis();
@@ -118,6 +123,7 @@ class ChatActivity : AppCompatActivity() {
                     Toast.makeText(this, e.message.toString(), Toast.LENGTH_SHORT).show()
                     Log.e("project|main", "Error sending message: $e")
                 }
+
         }
 
         messagesRef.addChildEventListener(object : ChildEventListener {
