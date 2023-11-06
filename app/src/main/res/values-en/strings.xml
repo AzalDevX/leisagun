@@ -97,6 +97,9 @@
     <string name="all_fields">Please fill in all fields</string>
     <string name="location_error">The location provided doesn\'t exist</string>
 
+    <!--  Favourite activity-->
+    <string name="favourite_activity_title">Activities</string>
+
     <string-array name="months">
         <item>January</item>
         <item>February</item>

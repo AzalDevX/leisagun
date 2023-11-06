@@ -11,7 +11,7 @@
             android:id="@+id/pageTitle"
             android:layout_width="408dp"
             android:layout_height="104dp"
-            android:text="Activities"
+            android:text="@string/favourite_activity_title"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:textSize="60sp" android:gravity="center"/>

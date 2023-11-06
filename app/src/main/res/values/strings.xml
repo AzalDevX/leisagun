@@ -97,6 +97,9 @@
     <!--  Chat activity -->
     <string name="chat_send">Enviar</string>
 
+    <!--  Favourite activity-->
+    <string name="favourite_activity_title">Actividades</string>
+
     <string name="back_button_description" translatable="false">Descripcion</string>
         <string-array name="months">
             <item>Enero</item>
