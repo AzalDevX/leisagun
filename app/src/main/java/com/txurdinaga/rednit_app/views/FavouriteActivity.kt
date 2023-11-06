@@ -1,10 +1,12 @@
 package com.txurdinaga.rednit_app.views
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
+import androidx.core.content.ContextCompat
 import com.google.firebase.firestore.FirebaseFirestore
 import com.txurdinaga.rednit_app.R
 import com.txurdinaga.rednit_app.classes.Globals
@@ -42,6 +44,10 @@ class FavouriteActivity : AppCompatActivity() {
             switch.text = activity.replaceFirstChar { it.uppercase() }
             switch.setOnCheckedChangeListener { _, isChecked ->
                 favourite_activities[index] = isChecked
+                val colorResId = if (isChecked) R.color.ON else R.color.OFF
+                val color = ContextCompat.getColor(this, colorResId)
+                switch.thumbTintList = ColorStateList.valueOf(color)
+
             }
             favourite_activities_checkbox.add(index, switch);
 
